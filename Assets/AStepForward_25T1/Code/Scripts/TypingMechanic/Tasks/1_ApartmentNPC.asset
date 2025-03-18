@@ -10,10 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 411e2b244c212d54e97f779fb268e21b, type: 3}
-  m_Name: Tutorial
+  m_Name: 1_ApartmentNPC
   m_EditorClassIdentifier: 
-  sentencesToType:
-  - START TYPING
-  - more words
-  - jetzt in deutsch
-  - Gute arbeit!
+  sentencesToType: []
+  sentenceBackground: []
