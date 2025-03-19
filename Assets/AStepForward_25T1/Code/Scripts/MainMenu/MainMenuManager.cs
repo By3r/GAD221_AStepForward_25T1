@@ -10,6 +10,9 @@ public class MainMenuManager : MonoBehaviour
     public TMP_Text optionsButtonText;
     public TMP_Text quitButtonText;
 
+    public GameObject mainMenuCanvas; // Reference to the Main Menu Canvas
+    public GameObject optionsCanvas;  // Reference to the Options Canvas
+
     private string startEnglish = "START";
     private string startGerman = "der Start";
     private string optionsEnglish = "OPTIONS";
@@ -23,6 +26,10 @@ public class MainMenuManager : MonoBehaviour
         startButtonText.text = startEnglish;
         optionsButtonText.text = optionsEnglish;
         quitButtonText.text = quitEnglish;
+
+        // Ensure the Main Menu is visible and the Options Menu is hidden at start
+        mainMenuCanvas.SetActive(true);
+        optionsCanvas.SetActive(false);
     }
 
     public void OnStartButtonHoverEnter()
@@ -57,12 +64,21 @@ public class MainMenuManager : MonoBehaviour
 
     public void GameStart()
     {
-        SceneManager.LoadScene("Airport"); // Load Level 1 scene
+        SceneManager.LoadScene("MechanicsTest"); // Load the Airport scene
     }
 
     public void Options()
     {
-        SceneManager.LoadSceneAsync("Options", LoadSceneMode.Additive); // Load Options scene additively
+        // Hide the Main Menu and show the Options Menu
+        mainMenuCanvas.SetActive(false);
+        optionsCanvas.SetActive(true);
+    }
+
+    public void GoBackToMainMenu()
+    {
+        // Hide the Options Menu and show the Main Menu
+        optionsCanvas.SetActive(false);
+        mainMenuCanvas.SetActive(true);
     }
 
     public void Quit()
