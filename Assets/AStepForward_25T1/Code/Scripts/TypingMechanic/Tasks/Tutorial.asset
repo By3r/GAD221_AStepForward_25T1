@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Tutorial
   m_EditorClassIdentifier: 
   sentencesToType:
-  - START TYPING
-  - more words
-  - jetzt in deutsch
-  - Gute arbeit!
+  - CAPITAL LETTERS
+  - lower case letters
+  - Here is a long sentence for you to type
+  - jetzt iauf deutsch
+  - Well done!
+  - gut gemacht!

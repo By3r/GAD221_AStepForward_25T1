@@ -13,8 +13,8 @@ public class MainMenuManager : MonoBehaviour
     public GameObject mainMenuCanvas; // Reference to the Main Menu Canvas
     public GameObject optionsCanvas;  // Reference to the Options Canvas
 
-    private string startEnglish = "START";
-    private string startGerman = "der Start";
+    private string startEnglish = "PLAY";
+    private string startGerman = "SPIEL STARTEN";
     private string optionsEnglish = "OPTIONS";
     private string optionsGerman = "OPTIONEN";
     private string quitEnglish = "QUIT";
