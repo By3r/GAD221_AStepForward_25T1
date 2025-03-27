@@ -56,7 +56,14 @@ public class SentenceValidator : MonoBehaviour
             {
                 if (_typedText.Length < _sentenceToDisplay.Length)
                 {
-                    if (c == _sentenceToDisplay[_typedText.Length])
+                    char expectedChar = _sentenceToDisplay[_typedText.Length];
+
+                    if (c == ' ' && expectedChar != ' ')
+                    {
+                        continue; 
+                    }
+
+                    if (c == expectedChar)
                     {
                         _typedText += c;
                         SkipSpaces(); 
@@ -76,6 +83,7 @@ public class SentenceValidator : MonoBehaviour
             }
         }
     }
+
 
     private void UpdateTypingProgress()
     {

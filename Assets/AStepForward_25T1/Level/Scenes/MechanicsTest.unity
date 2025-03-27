@@ -724,7 +724,6 @@ MonoBehaviour:
   letterToTypeColour: {r: 0, g: 1, b: 1, a: 1}
   incompleteLettersColour: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   incorrectLetterColour: {r: 1, g: 0, b: 0, a: 1}
-  spaceWordSize: 60
 --- !u!1 &1091888359
 GameObject:
   m_ObjectHideFlags: 0
@@ -1877,8 +1876,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: f133b2b901e24be4ca59e5d5cca5248c, type: 2}
-  m_sharedMaterial: {fileID: 3654196409331790004, guid: f133b2b901e24be4ca59e5d5cca5248c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
