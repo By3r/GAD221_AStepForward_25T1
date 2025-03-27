@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -40,6 +40,7 @@ public class SentenceValidator : MonoBehaviour
 
         _sentenceToDisplay = _currentSentence.sentencesToType[_currentSentenceIndex];
         _typedText = "";
+        SkipSpaces(); 
         UpdateTypingProgress();
     }
     #endregion
@@ -58,6 +59,7 @@ public class SentenceValidator : MonoBehaviour
                     if (c == _sentenceToDisplay[_typedText.Length])
                     {
                         _typedText += c;
+                        SkipSpaces(); 
                         UpdateTypingProgress();
                     }
                     else if (!_isFlashing)
@@ -106,6 +108,14 @@ public class SentenceValidator : MonoBehaviour
 
         UpdateTypingProgress();
         _isFlashing = false;
+    }
+
+    private void SkipSpaces()
+    {
+        while (_typedText.Length < _sentenceToDisplay.Length && _sentenceToDisplay[_typedText.Length] == ' ')
+        {
+            _typedText += ' ';
+        }
     }
     #endregion
 }
