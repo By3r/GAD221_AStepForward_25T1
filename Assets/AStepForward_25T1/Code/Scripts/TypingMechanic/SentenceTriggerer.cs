@@ -10,7 +10,7 @@ public class SentenceTriggerer : MonoBehaviour
     private bool _hasLoadedSentences = false;
     #endregion
 
-    void Update()
+    public void LoadSentences()
     {
         if (taskDifficultyPanel.activeSelf && !_hasLoadedSentences)
         {
@@ -29,7 +29,12 @@ public class SentenceTriggerer : MonoBehaviour
         taskDifficultyPanel.SetActive(true);
     }
 
-    private void OnMouseExit()
+    //private void OnMouseExit()
+    //{
+    //    Invoke("SetPanelAsInactive", 3);
+    //}
+
+    private void SetPanelAsInactive()
     {
         taskDifficultyPanel.SetActive(false);
     }

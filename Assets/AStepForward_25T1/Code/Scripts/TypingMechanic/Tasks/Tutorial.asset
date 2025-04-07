@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Tutorial
   m_EditorClassIdentifier: 
   sentencesToType:
-  - CAPITAL LETTERS
+  - "ich hei\xDFe Nina"
   - lower case letters
   - Here is a long sentence for you to type
   - jetzt auf deutsch
   - Well done!
+  - gut gemacht!
   - gut gemacht!

@@ -15,6 +15,11 @@ public class SentenceValidator : MonoBehaviour
     [SerializeField] private Color incompleteLettersColour = Color.grey;
     [SerializeField] private Color incorrectLetterColour = Color.red;
 
+    [Header("Script References")]
+    [SerializeField] private Tooltip tooltip;
+    [SerializeField] private UmlautCharConverter umlautConverter;
+
+
     private bool _isFlashing = false;
     private int _currentSentenceIndex = 0;
     private string _sentenceToDisplay = "";
@@ -40,7 +45,7 @@ public class SentenceValidator : MonoBehaviour
 
         _sentenceToDisplay = _currentSentence.sentencesToType[_currentSentenceIndex];
         _typedText = "";
-        SkipSpaces(); 
+        SkipSpaces();
         UpdateTypingProgress();
     }
     #endregion
@@ -50,36 +55,17 @@ public class SentenceValidator : MonoBehaviour
     {
         if (_currentSentence == null || _currentSentenceIndex >= _currentSentence.sentencesToType.Count) return;
 
+        char? umlautInput = umlautConverter?.GetUmlautCharacter();
+        if (umlautInput.HasValue)
+        {
+            ProcessInputChar(umlautInput.Value);
+        }
+
         foreach (char c in Input.inputString)
         {
             if (c != '\b')
             {
-                if (_typedText.Length < _sentenceToDisplay.Length)
-                {
-                    char expectedChar = _sentenceToDisplay[_typedText.Length];
-
-                    if (c == ' ' && expectedChar != ' ')
-                    {
-                        continue; 
-                    }
-
-                    if (c == expectedChar)
-                    {
-                        _typedText += c;
-                        SkipSpaces(); 
-                        UpdateTypingProgress();
-                    }
-                    else if (!_isFlashing)
-                    {
-                        StartCoroutine(FlashRequiredLetter());
-                    }
-                }
-            }
-
-            if (_typedText == _sentenceToDisplay)
-            {
-                _currentSentenceIndex++;
-                DisplaySentence();
+                ProcessInputChar(c);
             }
         }
     }
@@ -116,6 +102,35 @@ public class SentenceValidator : MonoBehaviour
 
         UpdateTypingProgress();
         _isFlashing = false;
+    }
+    private void ProcessInputChar(char c)
+    {
+        if (_typedText.Length >= _sentenceToDisplay.Length) return;
+
+        char expectedChar = _sentenceToDisplay[_typedText.Length];
+
+        if (c == ' ' && expectedChar != ' ')
+        {
+            tooltip?.ShowTooltip("You don't need\n to press space!");
+            return;
+        }
+
+        if (c == expectedChar)
+        {
+            _typedText += c;
+            SkipSpaces();
+            UpdateTypingProgress();
+        }
+        else if (!_isFlashing)
+        {
+            StartCoroutine(FlashRequiredLetter());
+        }
+
+        if (_typedText == _sentenceToDisplay)
+        {
+            _currentSentenceIndex++;
+            DisplaySentence();
+        }
     }
 
     private void SkipSpaces()
