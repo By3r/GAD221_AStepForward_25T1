@@ -12,7 +12,7 @@ public class UmlautCharConverter : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.U)) return 'ü';
         if (Input.GetKeyDown(KeyCode.S)) return 'ß';
 
-        if (Input.GetKey(KeyCode.Tab) && Input.GetKey(KeyCode.LeftControl))
+        if (Input.GetKey(KeyCode.Tab) && Input.GetKey(KeyCode.LeftShift))
         {
             if (Input.GetKeyDown(KeyCode.A)) return 'Ä';
             if (Input.GetKeyDown(KeyCode.O)) return 'Ö';

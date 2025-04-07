@@ -6,7 +6,8 @@ public class SentenceValidator : MonoBehaviour
 {
     #region Variables
     [SerializeField] private TMP_Text sentenceTextDisplay;
-    [SerializeField] private Sentences _currentSentence;
+    [SerializeField] private Sentences currentSentence;
+
 
     [Header("Colours")]
     [Tooltip("Feel free to change the default colours.")]
@@ -18,8 +19,12 @@ public class SentenceValidator : MonoBehaviour
     [Header("Script References")]
     [SerializeField] private Tooltip tooltip;
     [SerializeField] private UmlautCharConverter umlautConverter;
+    [SerializeField] private NPCDialogue npcDialogue;
 
-
+    private int _mistakeCount = 0;
+    private bool _hasStartedTyping = false; 
+    private int _spacePressCount = 0;
+    private bool _warnAboutSpace = true;
     private bool _isFlashing = false;
     private int _currentSentenceIndex = 0;
     private string _sentenceToDisplay = "";
@@ -29,7 +34,7 @@ public class SentenceValidator : MonoBehaviour
     #region Public Functions
     public void LoadSentenceSet(Sentences sentenceSet)
     {
-        _currentSentence = sentenceSet;
+        currentSentence = sentenceSet;
         _currentSentenceIndex = 0;
         _typedText = "";
         DisplaySentence();
@@ -37,23 +42,28 @@ public class SentenceValidator : MonoBehaviour
 
     private void DisplaySentence()
     {
-        if (_currentSentence == null || _currentSentenceIndex >= _currentSentence.sentencesToType.Count)
+        if (currentSentence == null || _currentSentenceIndex >= currentSentence.sentencesToType.Count)
         {
             Debug.Log("No more sentences to type");
+            sentenceTextDisplay.text = "";
             return;
         }
 
-        _sentenceToDisplay = _currentSentence.sentencesToType[_currentSentenceIndex];
+        _sentenceToDisplay = currentSentence.sentencesToType[_currentSentenceIndex];
         _typedText = "";
         SkipSpaces();
         UpdateTypingProgress();
+
+        npcDialogue?.Speak(_currentSentenceIndex);
+        _hasStartedTyping = false;
     }
+
     #endregion
 
     #region Private Functions
     private void Update()
     {
-        if (_currentSentence == null || _currentSentenceIndex >= _currentSentence.sentencesToType.Count) return;
+        if (currentSentence == null || _currentSentenceIndex >= currentSentence.sentencesToType.Count) return;
 
         char? umlautInput = umlautConverter?.GetUmlautCharacter();
         if (umlautInput.HasValue)
@@ -68,6 +78,7 @@ public class SentenceValidator : MonoBehaviour
                 ProcessInputChar(c);
             }
         }
+
     }
 
 
@@ -111,9 +122,24 @@ public class SentenceValidator : MonoBehaviour
 
         if (c == ' ' && expectedChar != ' ')
         {
-            tooltip?.ShowTooltip("You don't need\n to press space!");
+            if (_warnAboutSpace)
+            {
+                _spacePressCount++;
+
+                if (_spacePressCount <= 3)
+                {
+                    tooltip?.ShowTooltip("You don't need\n to press space!");
+                }
+
+                if (_spacePressCount >= 3)
+                {
+                    _warnAboutSpace = false;
+                }
+            }
+
             return;
         }
+
 
         if (c == expectedChar)
         {
@@ -124,13 +150,28 @@ public class SentenceValidator : MonoBehaviour
         else if (!_isFlashing)
         {
             StartCoroutine(FlashRequiredLetter());
+
+            _mistakeCount++;
+
+            if (_mistakeCount >= 2 && IsUmlautOrSharpS(expectedChar))
+            {
+                tooltip?.ShowTooltip("Hold Tab and the letter you want to type. For ß (sharp S), it's Tab + S.");
+                _mistakeCount = 0; 
+            }
         }
+
 
         if (_typedText == _sentenceToDisplay)
         {
+            npcDialogue?.Speak(_currentSentenceIndex); 
             _currentSentenceIndex++;
+            _hasStartedTyping = false; 
             DisplaySentence();
         }
+    }
+    private bool IsUmlautOrSharpS(char c)
+    {
+        return c == 'ä' || c == 'ö' || c == 'ü' || c == 'Ä' || c == 'Ö' || c == 'Ü' || c == 'ß';
     }
 
     private void SkipSpaces()

@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class SentenceTriggerer : MonoBehaviour
@@ -5,10 +6,23 @@ public class SentenceTriggerer : MonoBehaviour
     #region Variables
     [SerializeField] private Sentences _sentenceToDisplay;
     [SerializeField] private SentenceValidator _sentenceValidator;
+    [SerializeField] private TMP_Text sentenceTextDisplay;
     [SerializeField] private GameObject taskDifficultyPanel;
+    [SerializeField] private GameObject taskOnGoingPanel;
 
     private bool _hasLoadedSentences = false;
+
+    private bool _tempPlayerAttemptedGamePlay = false;
     #endregion
+
+    private void Update()
+    {
+        LoadSentences();
+        if (sentenceTextDisplay.text == "" && taskDifficultyPanel.activeSelf)
+        {
+            taskOnGoingPanel.SetActive(true);
+        }
+    }
 
     public void LoadSentences()
     {
@@ -26,13 +40,18 @@ public class SentenceTriggerer : MonoBehaviour
     #region Mouse Enter&Exit
     private void OnMouseEnter()
     {
-        taskDifficultyPanel.SetActive(true);
+        if (!_tempPlayerAttemptedGamePlay)
+        {
+            taskDifficultyPanel.SetActive(true);
+            taskOnGoingPanel.SetActive(true);
+            _tempPlayerAttemptedGamePlay = true;
+        }
     }
 
-    //private void OnMouseExit()
-    //{
-    //    Invoke("SetPanelAsInactive", 3);
-    //}
+    private void OnMouseExit()
+    {
+        Invoke("SetPanelAsInactive", 3);
+    }
 
     private void SetPanelAsInactive()
     {

@@ -13,10 +13,8 @@ MonoBehaviour:
   m_Name: Tutorial
   m_EditorClassIdentifier: 
   sentencesToType:
-  - "ich hei\xDFe Nina"
-  - lower case letters
-  - Here is a long sentence for you to type
-  - jetzt auf deutsch
-  - Well done!
-  - gut gemacht!
-  - gut gemacht!
+  - "Hello! I'm \xDForry, What did you say?"
+  - Oh! It's my first time coming to Germany
+  - Thank you, Where can I find taxis?
+  - Taxi signs, got it! Thank you for the hilfe
+  - EXIT
