@@ -128,7 +128,7 @@ public class SentenceValidator : MonoBehaviour
 
                 if (_spacePressCount <= 3)
                 {
-                    tooltip?.ShowTooltip("You don't need\n to press space!");
+                    tooltip?.ShowTooltip("You don't need to press space!");
                 }
 
                 if (_spacePressCount >= 3)
