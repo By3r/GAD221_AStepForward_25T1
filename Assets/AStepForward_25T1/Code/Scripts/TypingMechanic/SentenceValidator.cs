@@ -19,6 +19,8 @@ public class SentenceValidator : MonoBehaviour
     [SerializeField] private Tooltip tooltip;
     [SerializeField] private UmlautCharConverter umlautConverter;
     [SerializeField] private NPCDialogue npcDialogue;
+    [SerializeField] private TypingTimer typingTimer;
+    [SerializeField] private DaySystem daySystem;
 
     private int _mistakeCount = 0;
     private bool _hasStartedTyping = false;
@@ -51,7 +53,7 @@ public class SentenceValidator : MonoBehaviour
         _sentenceToDisplay = currentSentence.sentencesToType[_currentSentenceIndex];
         _typedText = "";
         SkipSpaces();
-        SkipPunctuation(); 
+        SkipPunctuation();
         UpdateTypingProgress();
 
         npcDialogue?.Speak(_currentSentenceIndex);
@@ -80,7 +82,6 @@ public class SentenceValidator : MonoBehaviour
         }
 
     }
-
 
     private void UpdateTypingProgress()
     {
@@ -120,6 +121,14 @@ public class SentenceValidator : MonoBehaviour
         if (_typedText.Length >= _sentenceToDisplay.Length) return;
 
         char expectedChar = _sentenceToDisplay[_typedText.Length];
+
+        if (!_hasStartedTyping)
+        {
+            _hasStartedTyping = true;
+            typingTimer.timeLimitInSeconds = currentSentence.timeLimitInMinutes * 60f;
+            typingTimer.StartTimer();
+            typingTimer.OnTimeOut += HandleTimerExpired;
+        }
 
         if (expectedChar == ' ' && c != ' ')
         {
@@ -177,6 +186,13 @@ public class SentenceValidator : MonoBehaviour
             npcDialogue?.Speak(_currentSentenceIndex);
             _currentSentenceIndex++;
             _hasStartedTyping = false;
+
+            if (_currentSentenceIndex >= currentSentence.sentencesToType.Count)
+            {
+                typingTimer.StopTimer();
+                daySystem.CompleteTask(currentSentence);
+            }
+
             DisplaySentence();
         }
     }
@@ -206,6 +222,12 @@ public class SentenceValidator : MonoBehaviour
     private bool IsSkippablePunctuation(char c)
     {
         return char.IsPunctuation(c) && !IsUmlautOrSharpS(c);
+    }
+
+    private void HandleTimerExpired()
+    {
+        Debug.Log("Time’s up! Task failed.");
+        daySystem.FailTask(currentSentence);
     }
 
     #endregion

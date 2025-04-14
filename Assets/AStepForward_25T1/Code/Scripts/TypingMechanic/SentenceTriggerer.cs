@@ -43,8 +43,6 @@ public class SentenceTriggerer : MonoBehaviour
         if (!_tempPlayerAttemptedGamePlay)
         {
             taskDifficultyPanel.SetActive(true);
-            taskOnGoingPanel.SetActive(true);
-            _tempPlayerAttemptedGamePlay = true;
         }
     }
 
