@@ -8,7 +8,6 @@ public class SentenceValidator : MonoBehaviour
     [SerializeField] private TMP_Text sentenceTextDisplay;
     [SerializeField] private Sentences currentSentence;
 
-
     [Header("Colours")]
     [Tooltip("Feel free to change the default colours.")]
     [SerializeField] private Color correctLettersColour = Color.green;
@@ -22,7 +21,7 @@ public class SentenceValidator : MonoBehaviour
     [SerializeField] private NPCDialogue npcDialogue;
 
     private int _mistakeCount = 0;
-    private bool _hasStartedTyping = false; 
+    private bool _hasStartedTyping = false;
     private int _spacePressCount = 0;
     private bool _warnAboutSpace = true;
     private bool _isFlashing = false;
@@ -52,6 +51,7 @@ public class SentenceValidator : MonoBehaviour
         _sentenceToDisplay = currentSentence.sentencesToType[_currentSentenceIndex];
         _typedText = "";
         SkipSpaces();
+        SkipPunctuation(); 
         UpdateTypingProgress();
 
         npcDialogue?.Speak(_currentSentenceIndex);
@@ -114,13 +114,14 @@ public class SentenceValidator : MonoBehaviour
         UpdateTypingProgress();
         _isFlashing = false;
     }
+
     private void ProcessInputChar(char c)
     {
         if (_typedText.Length >= _sentenceToDisplay.Length) return;
 
         char expectedChar = _sentenceToDisplay[_typedText.Length];
 
-        if (c == ' ' && expectedChar != ' ')
+        if (expectedChar == ' ' && c != ' ')
         {
             if (_warnAboutSpace)
             {
@@ -128,7 +129,7 @@ public class SentenceValidator : MonoBehaviour
 
                 if (_spacePressCount <= 3)
                 {
-                    tooltip?.ShowTooltip("You don't need\n to press space!");
+                    tooltip?.ShowTooltip("You don't need to press space!");
                 }
 
                 if (_spacePressCount >= 3)
@@ -136,14 +137,25 @@ public class SentenceValidator : MonoBehaviour
                     _warnAboutSpace = false;
                 }
             }
-
             return;
         }
 
+        bool isCorrect = false;
 
-        if (c == expectedChar)
+        #region Accept any char for punctuation chars
+        if (IsSkippablePunctuation(expectedChar))
         {
-            _typedText += c;
+            isCorrect = true;
+        }
+        else if (char.ToLowerInvariant(c) == char.ToLowerInvariant(expectedChar))
+        {
+            isCorrect = true;
+        }
+        #endregion
+
+        if (isCorrect)
+        {
+            _typedText += expectedChar;
             SkipSpaces();
             UpdateTypingProgress();
         }
@@ -156,19 +168,19 @@ public class SentenceValidator : MonoBehaviour
             if (_mistakeCount >= 2 && IsUmlautOrSharpS(expectedChar))
             {
                 tooltip?.ShowTooltip("Hold Tab and the letter you want to type. For ß (sharp S), it's Tab + S.");
-                _mistakeCount = 0; 
+                _mistakeCount = 0;
             }
         }
 
-
         if (_typedText == _sentenceToDisplay)
         {
-            npcDialogue?.Speak(_currentSentenceIndex); 
+            npcDialogue?.Speak(_currentSentenceIndex);
             _currentSentenceIndex++;
-            _hasStartedTyping = false; 
+            _hasStartedTyping = false;
             DisplaySentence();
         }
     }
+
     private bool IsUmlautOrSharpS(char c)
     {
         return c == 'ä' || c == 'ö' || c == 'ü' || c == 'Ä' || c == 'Ö' || c == 'Ü' || c == 'ß';
@@ -181,5 +193,20 @@ public class SentenceValidator : MonoBehaviour
             _typedText += ' ';
         }
     }
+
+    private void SkipPunctuation()
+    {
+        while (_typedText.Length < _sentenceToDisplay.Length &&
+               IsSkippablePunctuation(_sentenceToDisplay[_typedText.Length]))
+        {
+            _typedText += _sentenceToDisplay[_typedText.Length];
+        }
+    }
+
+    private bool IsSkippablePunctuation(char c)
+    {
+        return char.IsPunctuation(c) && !IsUmlautOrSharpS(c);
+    }
+
     #endregion
 }
