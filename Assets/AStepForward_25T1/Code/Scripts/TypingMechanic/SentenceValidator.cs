@@ -6,10 +6,10 @@ public class SentenceValidator : MonoBehaviour
 {
     #region Variables
     [SerializeField] private TMP_Text sentenceTextDisplay;
-    [SerializeField] private Sentences currentSentence;
+    public Sentences currentSentence;
+    public NPCDialogue npcDialogue;
 
     [Header("Colours")]
-    [Tooltip("Feel free to change the default colours.")]
     [SerializeField] private Color correctLettersColour = Color.green;
     [SerializeField] private Color letterToTypeColour = Color.cyan;
     [SerializeField] private Color incompleteLettersColour = Color.grey;
@@ -18,7 +18,6 @@ public class SentenceValidator : MonoBehaviour
     [Header("Script References")]
     [SerializeField] private Tooltip tooltip;
     [SerializeField] private UmlautCharConverter umlautConverter;
-    [SerializeField] private NPCDialogue npcDialogue;
     [SerializeField] private TypingTimer typingTimer;
     [SerializeField] private DaySystem daySystem;
 
@@ -30,22 +29,44 @@ public class SentenceValidator : MonoBehaviour
     private int _currentSentenceIndex = 0;
     private string _sentenceToDisplay = "";
     private string _typedText = "";
+    private bool _showingTranslation = false;
+    private bool _taskTimerStarted = false;
+
+    private SentenceTriggerer _currentTriggerer;
     #endregion
 
-    #region Public Functions
-    public void LoadSentenceSet(Sentences sentenceSet)
+    public void LoadSentenceSet(Sentences sentenceSet, SentenceTriggerer triggerer)
     {
         currentSentence = sentenceSet;
+        _currentTriggerer = triggerer;
+        npcDialogue = triggerer.GetNPCDialogue();
         _currentSentenceIndex = 0;
         _typedText = "";
+        _taskTimerStarted = false;
         DisplaySentence();
+    }
+
+    public int GetCurrentSentenceIndex() => _currentSentenceIndex;
+
+    public void ShowSentenceTranslation()
+    {
+        if (currentSentence.translatedSentences.Count > _currentSentenceIndex)
+        {
+            _showingTranslation = true;
+            sentenceTextDisplay.text = currentSentence.translatedSentences[_currentSentenceIndex];
+        }
+    }
+
+    public void HideSentenceTranslation()
+    {
+        _showingTranslation = false;
+        UpdateTypingProgress();
     }
 
     private void DisplaySentence()
     {
         if (currentSentence == null || _currentSentenceIndex >= currentSentence.sentencesToType.Count)
         {
-            Debug.Log("No more sentences to type");
             sentenceTextDisplay.text = "";
             return;
         }
@@ -60,9 +81,6 @@ public class SentenceValidator : MonoBehaviour
         _hasStartedTyping = false;
     }
 
-    #endregion
-
-    #region Private Functions
     private void Update()
     {
         if (currentSentence == null || _currentSentenceIndex >= currentSentence.sentencesToType.Count) return;
@@ -80,11 +98,17 @@ public class SentenceValidator : MonoBehaviour
                 ProcessInputChar(c);
             }
         }
-
     }
 
+    #region Private Functions
     private void UpdateTypingProgress()
     {
+        if (_showingTranslation)
+        {
+            ShowSentenceTranslation();
+            return;
+        }
+
         string correctLetters = $"<color=#{ColorUtility.ToHtmlStringRGB(correctLettersColour)}>{_typedText}</color>";
         string letterToType = _typedText.Length < _sentenceToDisplay.Length
             ? $"<color=#{ColorUtility.ToHtmlStringRGB(letterToTypeColour)}>{_sentenceToDisplay[_typedText.Length]}</color>"
@@ -111,7 +135,6 @@ public class SentenceValidator : MonoBehaviour
         sentenceTextDisplay.text = correctLetters + flashingLetter + remainingLetters;
 
         yield return new WaitForSeconds(0.2f);
-
         UpdateTypingProgress();
         _isFlashing = false;
     }
@@ -125,42 +148,30 @@ public class SentenceValidator : MonoBehaviour
         if (!_hasStartedTyping)
         {
             _hasStartedTyping = true;
-            typingTimer.timeLimitInSeconds = currentSentence.timeLimitInMinutes * 60f;
-            typingTimer.StartTimer();
-            typingTimer.OnTimeOut += HandleTimerExpired;
+
+            if (!_taskTimerStarted)
+            {
+                _taskTimerStarted = true;
+                typingTimer.timeLimitInSeconds = currentSentence.timeLimitInMinutes * 60f;
+                typingTimer.StartTimer();
+                typingTimer.OnTimeOut += HandleTimerExpired;
+            }
         }
 
-        if (expectedChar == ' ' && c != ' ')
+        if (c == ' ' && expectedChar != ' ')
         {
             if (_warnAboutSpace)
             {
                 _spacePressCount++;
-
                 if (_spacePressCount <= 3)
-                {
                     tooltip?.ShowTooltip("You don't need to press space!");
-                }
-
                 if (_spacePressCount >= 3)
-                {
                     _warnAboutSpace = false;
-                }
             }
             return;
         }
 
-        bool isCorrect = false;
-
-        #region Accept any char for punctuation chars
-        if (IsSkippablePunctuation(expectedChar))
-        {
-            isCorrect = true;
-        }
-        else if (char.ToLowerInvariant(c) == char.ToLowerInvariant(expectedChar))
-        {
-            isCorrect = true;
-        }
-        #endregion
+        bool isCorrect = IsSkippablePunctuation(expectedChar) || char.ToLowerInvariant(c) == char.ToLowerInvariant(expectedChar);
 
         if (isCorrect)
         {
@@ -173,7 +184,6 @@ public class SentenceValidator : MonoBehaviour
             StartCoroutine(FlashRequiredLetter());
 
             _mistakeCount++;
-
             if (_mistakeCount >= 2 && IsUmlautOrSharpS(expectedChar))
             {
                 tooltip?.ShowTooltip("Hold Tab and the letter you want to type. For ß (sharp S), it's Tab + S.");
@@ -183,23 +193,43 @@ public class SentenceValidator : MonoBehaviour
 
         if (_typedText == _sentenceToDisplay)
         {
-            npcDialogue?.Speak(_currentSentenceIndex);
             _currentSentenceIndex++;
             _hasStartedTyping = false;
 
             if (_currentSentenceIndex >= currentSentence.sentencesToType.Count)
             {
                 typingTimer.StopTimer();
+                _taskTimerStarted = false;
                 daySystem.CompleteTask(currentSentence);
+                _currentTriggerer?.OnTaskCompleted();
             }
 
             DisplaySentence();
         }
     }
 
+    private void HandleTimerExpired()
+    {
+        Debug.Log("Time’s up! Task failed.");
+        typingTimer.StopTimer();
+        _taskTimerStarted = false;
+
+        if (_currentTriggerer != null)
+        {
+            daySystem.FailTask(currentSentence, _currentTriggerer.GetOngoingPanel());
+            _currentTriggerer.OnTaskFailed();
+        }
+    }
+
+
     private bool IsUmlautOrSharpS(char c)
     {
-        return c == 'ä' || c == 'ö' || c == 'ü' || c == 'Ä' || c == 'Ö' || c == 'Ü' || c == 'ß';
+        return "äöüÄÖÜß".Contains(c.ToString());
+    }
+
+    private bool IsSkippablePunctuation(char c)
+    {
+        return char.IsPunctuation(c) && !IsUmlautOrSharpS(c);
     }
 
     private void SkipSpaces()
@@ -218,17 +248,5 @@ public class SentenceValidator : MonoBehaviour
             _typedText += _sentenceToDisplay[_typedText.Length];
         }
     }
-
-    private bool IsSkippablePunctuation(char c)
-    {
-        return char.IsPunctuation(c) && !IsUmlautOrSharpS(c);
-    }
-
-    private void HandleTimerExpired()
-    {
-        Debug.Log("Time’s up! Task failed.");
-        daySystem.FailTask(currentSentence);
-    }
-
     #endregion
 }
