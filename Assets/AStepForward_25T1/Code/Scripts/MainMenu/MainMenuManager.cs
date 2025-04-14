@@ -64,7 +64,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void GameStart()
     {
-        SceneManager.LoadScene("MechanicsTest"); // Load the Airport scene
+        SceneManager.LoadScene("Airport"); // Load the Airport scene
     }
 
     public void Options()
