@@ -10,11 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 411e2b244c212d54e97f779fb268e21b, type: 3}
-  m_Name: Tutorial
+  m_Name: Taxi
   m_EditorClassIdentifier: 
+  timeLimitInMinutes: 1
   sentencesToType:
-  - "Hello! I'm \xDForry, What did you say?"
-  - Oh! It's my first time coming to Germany
-  - Thank you, Where can I find taxis?
-  - Taxi signs, got it! Thank you for the hilfe
-  - EXIT
+  - Thank you for playing

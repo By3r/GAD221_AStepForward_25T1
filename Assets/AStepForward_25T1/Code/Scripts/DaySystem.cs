@@ -10,6 +10,7 @@ public class DaySystem : MonoBehaviour
 
     [SerializeField] private TMP_Text dayTrackerText;
     [SerializeField] private TMP_Text tasksCompletedText;
+    [SerializeField] private GameObject failPanel;
 
     private int _currentDay = 1;
     private int _maximumDays = 30;
@@ -42,14 +43,28 @@ public class DaySystem : MonoBehaviour
         }
     }
 
-    public void FailTask(Sentences task)
+    public void FailTask(Sentences task, GameObject taskOngoingPanel = null)
     {
         if (!completedTasks.Contains(task))
         {
             failedTasks.Add(task);
             Debug.Log($"Task \"{task.name}\" failed. Can retry.");
+
+            if (failPanel != null)
+                failPanel.SetActive(true);
+
+            if (taskOngoingPanel != null)
+                StartCoroutine(TurnOffPanelsDelayed(taskOngoingPanel));
+
             UpdateUI();
         }
+    }
+
+    private IEnumerator TurnOffPanelsDelayed(GameObject panel)
+    {
+        yield return new WaitForSeconds(3f);
+        if (failPanel != null) failPanel.SetActive(false);
+        if (panel != null) panel.SetActive(false);
     }
 
     public void AdvanceDay()
@@ -73,11 +88,9 @@ public class DaySystem : MonoBehaviour
     private void UpdateUI()
     {
         if (tasksCompletedText != null)
-            tasksCompletedText.text = $"{completedTasks.Count} / {totalRequiredTasks} Tasks Completed";
+            tasksCompletedText.text = $"{completedTasks.Count} / {totalRequiredTasks}";
 
         if (dayTrackerText != null)
             dayTrackerText.text = $"Day {Mathf.Clamp(_currentDay, 1, _maximumDays)}";
     }
-
-
 }

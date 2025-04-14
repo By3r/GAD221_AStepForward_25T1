@@ -2,19 +2,21 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class TextLanguageEditor : MonoBehaviour
+public class GeneralTextTranslator : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+    #region Variables
     [SerializeField] private string hoverText;
     [SerializeField] private string defaultText;
-
     [SerializeField] private TMP_Text _text;
+    #endregion
 
     private void Awake()
     {
-        if (string.IsNullOrEmpty(defaultText) && _text != null)
-        {
+        if (_text == null)
+            _text = GetComponent<TMP_Text>();
+
+        if (string.IsNullOrEmpty(defaultText))
             defaultText = _text.text;
-        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
