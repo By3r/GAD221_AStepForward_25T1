@@ -1485,7 +1485,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tooltipCanvas: {fileID: 396734492}
   tooltipText: {fileID: 1710516742}
-  displayTime: 2
+  displayTime: 4
 --- !u!114 &997286148
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -18,9 +18,9 @@ public class SentenceTriggerer : MonoBehaviour
     private void Update()
     {
         LoadSentences();
-        if (sentenceTextDisplay.text == "" && taskDifficultyPanel.activeSelf)
+        if (sentenceTextDisplay.text == "")
         {
-            taskOnGoingPanel.SetActive(true);
+            taskOnGoingPanel.SetActive(false);
         }
     }
 
