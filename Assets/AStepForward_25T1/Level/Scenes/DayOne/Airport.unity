@@ -2115,6 +2115,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Airport
       objectReference: {fileID: 0}
+    - target: {fileID: 7760634457682879916, guid: 5e600ebcde7bffd488fa4b9bb0b2ca5f, type: 3}
+      propertyPath: dialogueText
+      value: 
+      objectReference: {fileID: 2047000056}
+    - target: {fileID: 7760634457682879916, guid: 5e600ebcde7bffd488fa4b9bb0b2ca5f, type: 3}
+      propertyPath: dialogueLines
+      value: 
+      objectReference: {fileID: 11400000, guid: b872b13d996b432428c8607d59527403, type: 2}
     - target: {fileID: 9004824249722340952, guid: 5e600ebcde7bffd488fa4b9bb0b2ca5f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
