@@ -51,7 +51,7 @@ public class SentenceTriggerer : MonoBehaviour
     {
         if (_taskCompleted) return;
 
-        Invoke(nameof(SetPanelAsInactive), 3);
+        Invoke(nameof(SetPanelAsInactive), 100);
 
         _sentenceValidator?.HideSentenceTranslation();
         assignedNPCDialogue?.HideTranslation();

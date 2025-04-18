@@ -1,39 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class FollowPlayer : MonoBehaviour
+namespace MainCam
 {
-    #region Variables
-    [SerializeField] private GameObject player;
-    [SerializeField] private Vector3 offset;
-
-    private Vector3 _lastPlayerPosition;
-    #endregion
-
-    private void Start()
+    public class FollowPlayer : MonoBehaviour
     {
-        if (player != null)
+        [SerializeField] private GameObject player;
+        [SerializeField] private float followSpeed = 5f;
+        [SerializeField] private Vector3 offset;
+
+        private Vector3 velocity = Vector3.zero;
+
+        void Start()
         {
-            _lastPlayerPosition = player.transform.position;
+            if (player != null) offset = transform.position - player.transform.position;
         }
-    }
 
-    private void LateUpdate()
-    {
-        if (player == null) return;
-
-        if (player.transform.position != _lastPlayerPosition)
+        void LateUpdate()
         {
-            Vector3 targetPosition = new Vector3(
-                player.transform.position.x + offset.x,
-                player.transform.position.y + offset.y,
-                player.transform.position.z + offset.z
-            );
+            if (player == null) return;
 
-            transform.position = targetPosition;
-
-            _lastPlayerPosition = player.transform.position;
+            Vector3 targetPosition = player.transform.position + offset;
+            transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, 1f / followSpeed);
         }
     }
 }
