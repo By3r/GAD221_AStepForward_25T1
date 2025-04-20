@@ -1,115 +1,93 @@
-﻿using TMPro;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class SentenceTriggerer : MonoBehaviour
 {
     #region Variables
+    public NPCDialogue GetNPCDialogue() => assignedNPCDialogue;
+    public GameObject GetOngoingPanel() => taskOngoingPanel;
+
     [SerializeField] private Sentences _sentenceToDisplay;
     [SerializeField] private SentenceValidator _sentenceValidator;
-    [SerializeField] private TMP_Text sentenceTextDisplay;
     [SerializeField] private GameObject taskDifficultyPanel;
-
-    [SerializeField] private GameObject taskOnGoingPanel;
-    public GameObject GetOngoingPanel() => taskOnGoingPanel;
-
+    [SerializeField] private GameObject taskOngoingPanel;
     [SerializeField] private GameObject exclamationMarkIcon;
     [SerializeField] private NPCDialogue assignedNPCDialogue;
 
-    public NPCDialogue GetNPCDialogue() => assignedNPCDialogue;
-
     private bool _hasLoadedSentences = false;
-    private bool _canPressEnterToConfirm = false;
     private bool _taskStarted = false;
     private bool _taskCompleted = false;
-
-    private const int DefaultLayer = 0;
-    private const int TaskLayer = 6;
     #endregion
 
-    private void Update()
+    private void OnEnable()
     {
-        if (_taskCompleted) return;
-
-        if (_canPressEnterToConfirm && !_taskStarted && Input.GetKeyDown(KeyCode.Return))
-        {
-            StartTask();
-        }
+        GameEvents.OnTaskCompleted += HandleTaskCompleted;
+        GameEvents.OnTaskFailed += HandleTaskFailed;
     }
 
-    private void OnMouseEnter()
+    private void OnDisable()
     {
-        if (_taskCompleted) return;
-
-        if (!_hasLoadedSentences)
-        {
-            taskDifficultyPanel.SetActive(true);
-            LoadSentences();
-        }
+        GameEvents.OnTaskCompleted -= HandleTaskCompleted;
+        GameEvents.OnTaskFailed -= HandleTaskFailed;
     }
 
-    private void OnMouseExit()
+    private void OnMouseDown()
     {
-        if (_taskCompleted) return;
+        if (_taskCompleted || _hasLoadedSentences) return;
 
-        Invoke(nameof(SetPanelAsInactive), 100);
-
-        _sentenceValidator?.HideSentenceTranslation();
-        assignedNPCDialogue?.HideTranslation();
-    }
-
-    private void StartTask()
-    {
-        _sentenceValidator.LoadSentenceSet(_sentenceToDisplay, this);
-        taskOnGoingPanel.SetActive(true);
+        taskDifficultyPanel.SetActive(true);
         _hasLoadedSentences = true;
+
+        GameEvents.OnTaskRetryRequested?.Invoke(_sentenceToDisplay);
+    }
+
+    #region Public Functions
+    public void StartTaskButtonPressed()
+    {
+        if (_taskStarted || _taskCompleted) return;
+
         _taskStarted = true;
-        _canPressEnterToConfirm = false;
-    }
-
-    public void LoadSentences()
-    {
-        if (taskDifficultyPanel.activeSelf && !_hasLoadedSentences)
-        {
-            _canPressEnterToConfirm = true;
-        }
-        else if (!taskDifficultyPanel.activeSelf)
-        {
-            _hasLoadedSentences = false;
-            _canPressEnterToConfirm = false;
-        }
-    }
-
-    private void SetPanelAsInactive()
-    {
+        _hasLoadedSentences = true;
         taskDifficultyPanel.SetActive(false);
+        taskOngoingPanel.SetActive(true);
+
+        _sentenceValidator.LoadSentenceSet(_sentenceToDisplay, this);
+        GameEvents.OnTaskStarted?.Invoke(_sentenceToDisplay);
     }
 
-    public void OnTaskCompleted()
+    public void CancelTaskPanel(GameObject taskpanel)
     {
+        _taskCompleted = false;
+        taskpanel.SetActive(false);
+        _hasLoadedSentences = false;
+    }
+    #endregion
+
+    #region Private Functions
+    private void HandleTaskCompleted(Sentences task)
+    {
+        if (task != _sentenceToDisplay) return;
+
         _taskCompleted = true;
         _taskStarted = false;
 
-        if (taskOnGoingPanel != null)
-            taskOnGoingPanel.SetActive(false);
-
-        gameObject.layer = DefaultLayer;
+        if (taskOngoingPanel != null)
+            taskOngoingPanel.SetActive(false);
 
         if (exclamationMarkIcon != null)
             exclamationMarkIcon.SetActive(false);
 
-        Debug.Log($"Task {_sentenceToDisplay.name} completed");
+        gameObject.layer = LayerMask.NameToLayer("Default");
     }
 
-    public void OnTaskFailed()
+    private void HandleTaskFailed(Sentences task)
     {
-        _taskCompleted = false;
+        if (task != _sentenceToDisplay) return;
+
         _taskStarted = false;
+        _taskCompleted = false;
+        _hasLoadedSentences = false;
 
-        gameObject.layer = TaskLayer;
-
-        if (exclamationMarkIcon != null)
-            exclamationMarkIcon.SetActive(true);
-
-        Debug.Log($"Task {_sentenceToDisplay.name} failed");
+        if (exclamationMarkIcon != null) exclamationMarkIcon.SetActive(true);
     }
+    #endregion
 }

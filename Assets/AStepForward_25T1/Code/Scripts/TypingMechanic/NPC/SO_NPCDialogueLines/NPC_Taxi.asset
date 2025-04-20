@@ -13,4 +13,18 @@ MonoBehaviour:
   m_Name: NPC_Taxi
   m_EditorClassIdentifier: 
   lines:
-  - No content is available
+  - "Hallo! Wohin geht\u2019s?"
+  - Okay, ist das dein erstes Mal in Berlin?
+  - "Willkommen in Berlin! Wie hei\xDFt du?"
+  - "Ich hei\xDFe Roberto, ich komme aus Italien."
+  - "Ah, Amerika\u2026 sehr sch\xF6n."
+  - Wir sind beim H-Hotel angekommen.
+  - Das macht 18,75 Euro.
+  translatedLines:
+  - Hello! Where are you going to?
+  - Okay, is this your first time in Berlin?
+  - "Welcome to Berlin! What\u2019s your name?"
+  - My name is Roberto, I come from Italy.
+  - "Ah, America\u2026 very nice."
+  - "We\u2019ve reached H Hotel."
+  - "That\u2019ll be 18.75 euros."
