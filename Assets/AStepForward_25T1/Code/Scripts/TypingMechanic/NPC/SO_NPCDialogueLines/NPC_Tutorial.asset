@@ -24,3 +24,9 @@ MonoBehaviour:
   - "Outside, drau\xDFen vor dem Flughafen..."
   - Can I help you with anything else?
   - Have a nice day, Goodbye.
+  audioClips:
+  - {fileID: 8300000, guid: 387d2787f0f01ce40a1a8754f80bdbe6, type: 3}
+  - {fileID: 8300000, guid: c57d954d3ed456341986db0f24c7da06, type: 3}
+  - {fileID: 8300000, guid: 7cd68995bcc53cd488d58ac960734593, type: 3}
+  - {fileID: 8300000, guid: 9635266e9590f444aaeec66f11303c09, type: 3}
+  - {fileID: 8300000, guid: 2135186ab27a3b24ba3087896de7c0ed, type: 3}

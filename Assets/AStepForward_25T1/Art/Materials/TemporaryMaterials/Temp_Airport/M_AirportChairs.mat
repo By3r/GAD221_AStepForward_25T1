@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_Non_Interractable
+  m_Name: M_AirportChairs
   m_Shader: {fileID: 4800000, guid: 7cd5de0b884b14f88ab763ef465e1799, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -62,7 +62,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _AmbientCol: 0.118
+    - _AmbientCol: 0
     - _BumpScale: 1
     - _Clipped: 0
     - _ColBright: 0
@@ -71,30 +71,32 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _GlossMapScale: 1
-    - _Glossiness: 0.366
+    - _Glossiness: 0
     - _GlossyReflections: 1
-    - _Lumin: 0.24
+    - _Lumin: 1
     - _MaxLight: 1
-    - _Metallic: 0
-    - _MinLight: 0.137
+    - _Metallic: 0.864
+    - _MinLight: 0.13
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _Offset: -0.28
+    - _Offset: 0.01
+    - _OtlWidth: 1
     - _Parallax: 0.02
     - _Segmented: 1
-    - _ShnIntense: 0.12
+    - _ShnIntense: 0.35
     - _ShnOverlap: 0
-    - _ShnRange: 0.13
+    - _ShnRange: 0.15
     - _ShnSmooth: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _Steps: 3.4
-    - _StpSmooth: 0.255
+    - _Steps: 7
+    - _StpSmooth: 0
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.3018868, g: 0.3018868, b: 0.3018868, a: 1}
+    - _Color: {r: 0.1071111, g: 0.36202493, b: 0.7830189, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _ShnColor: {r: 0.18098079, g: 0.4811877, b: 0.7830189, a: 1}
+    - _OtlColor: {r: 0, g: 0, b: 0, a: 1}
+    - _ShnColor: {r: 0.3066038, g: 0.53631324, b: 1, a: 1}
   m_BuildTextureStacks: []

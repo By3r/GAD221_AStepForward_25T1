@@ -1,5 +1,171 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2437352846827336981
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4397022487855002811}
+  - component: {fileID: 4239906283018477726}
+  - component: {fileID: 9202121925916137411}
+  m_Layer: 0
+  m_Name: Wheel_FR (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4397022487855002811
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2437352846827336981}
+  serializedVersion: 2
+  m_LocalRotation: {x: -3.375078e-14, y: -0.022511035, z: -0.000000001699549, w: 0.9997467}
+  m_LocalPosition: {x: 0.98823965, y: -0.63877356, z: 1.417082}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8940426670495419719}
+  m_LocalEulerAnglesHint: {x: 0, y: 8.934, z: 0}
+--- !u!33 &4239906283018477726
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2437352846827336981}
+  m_Mesh: {fileID: 4300000, guid: 76eea54e4cf71bf4dac0e3ef48ee32b7, type: 3}
+--- !u!23 &9202121925916137411
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2437352846827336981}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 24c20333a6b79874298a79151051f9fa, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &3238431736645383378
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4656683243901244211}
+  - component: {fileID: 6714666408148928790}
+  - component: {fileID: 338712015249286566}
+  m_Layer: 0
+  m_Name: Wheel_RR (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4656683243901244211
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3238431736645383378}
+  serializedVersion: 2
+  m_LocalRotation: {x: -3.375078e-14, y: -0.022511035, z: -0.000000001699549, w: 0.9997467}
+  m_LocalPosition: {x: 1.0713356, y: -0.63877326, z: -2.0970478}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8940426670495419719}
+  m_LocalEulerAnglesHint: {x: 0, y: 8.934, z: 0}
+--- !u!33 &6714666408148928790
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3238431736645383378}
+  m_Mesh: {fileID: 4300002, guid: 76eea54e4cf71bf4dac0e3ef48ee32b7, type: 3}
+--- !u!23 &338712015249286566
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3238431736645383378}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 24c20333a6b79874298a79151051f9fa, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &6661360287192858092
 GameObject:
   m_ObjectHideFlags: 0
@@ -13,6 +179,7 @@ GameObject:
   - component: {fileID: 8359139021311995796}
   - component: {fileID: 5337074934368780833}
   - component: {fileID: 5425940629498761843}
+  - component: {fileID: 5825273876432852883}
   m_Layer: 6
   m_Name: Taxi_NPC
   m_TagString: Untagged
@@ -33,6 +200,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 4656683243901244211}
+  - {fileID: 4397022487855002811}
   - {fileID: 7404266125482105838}
   - {fileID: 3888571876806814763}
   m_Father: {fileID: 0}
@@ -65,7 +234,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2148796988900bb49b1e773bad5e673b, type: 2}
+  - {fileID: 2100000, guid: 24c20333a6b79874298a79151051f9fa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -99,12 +268,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a23ed80e96b4ab648a75478450e374c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sentenceToDisplay: {fileID: 0}
+  _sentenceToDisplay: {fileID: 11400000, guid: 9c15afef9e07aac4599f05c156d9a4de, type: 2}
   _sentenceValidator: {fileID: 0}
-  taskDifficultyPanel: {fileID: 0}
+  taskDifficultyPanel: {fileID: 5054409691266363156}
   taskOngoingPanel: {fileID: 0}
-  exclamationMarkIcon: {fileID: 0}
-  assignedNPCDialogue: {fileID: 0}
+  exclamationMarkIcon: {fileID: 8339214322586755874}
+  assignedNPCDialogue: {fileID: 5425940629498761843}
 --- !u!114 &5425940629498761843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,8 +286,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8216e5131876e04bb4c1087efeb6540, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueLines: {fileID: 0}
+  dialogueLines: {fileID: 11400000, guid: b872b13d996b432428c8607d59527403, type: 2}
   dialogueText: {fileID: 0}
+--- !u!65 &5825273876432852883
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6661360287192858092}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.9580626, y: 2.1295998, z: 6.320544}
+  m_Center: {x: -0.00070571917, y: 0.27992716, z: -0.30544}
 --- !u!1 &8339214322586755874
 GameObject:
   m_ObjectHideFlags: 0
@@ -211,6 +401,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8940426670495419719}
     m_Modifications:
+    - target: {fileID: 918127772915014277, guid: 146640afb216571488fa0d55ee538d5e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5337074934368780833}
+    - target: {fileID: 918127772915014277, guid: 146640afb216571488fa0d55ee538d5e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SentenceTriggerer, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 2660543544671569766, guid: 146640afb216571488fa0d55ee538d5e, type: 3}
       propertyPath: m_Type
       value: 0
@@ -411,6 +609,30 @@ PrefabInstance:
       propertyPath: m_SpriteState.m_HighlightedSprite
       value: 
       objectReference: {fileID: 21300000, guid: 8c064d1201912f946b2586d1691c439c, type: 3}
+    - target: {fileID: 7693128148697415152, guid: 146640afb216571488fa0d55ee538d5e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7693128148697415152, guid: 146640afb216571488fa0d55ee538d5e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5337074934368780833}
+    - target: {fileID: 7693128148697415152, guid: 146640afb216571488fa0d55ee538d5e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StartTaskButtonPressed
+      objectReference: {fileID: 0}
+    - target: {fileID: 7693128148697415152, guid: 146640afb216571488fa0d55ee538d5e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SentenceTriggerer, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7693128148697415152, guid: 146640afb216571488fa0d55ee538d5e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7693128148697415152, guid: 146640afb216571488fa0d55ee538d5e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 9097593865446934345, guid: 146640afb216571488fa0d55ee538d5e, type: 3}
       propertyPath: hoverText
       value: Taxi ride
@@ -432,5 +654,10 @@ PrefabInstance:
 --- !u!224 &3888571876806814763 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3928271419042782226, guid: 146640afb216571488fa0d55ee538d5e, type: 3}
+  m_PrefabInstance: {fileID: 248539715953340473}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5054409691266363156 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4996219713529880365, guid: 146640afb216571488fa0d55ee538d5e, type: 3}
   m_PrefabInstance: {fileID: 248539715953340473}
   m_PrefabAsset: {fileID: 0}

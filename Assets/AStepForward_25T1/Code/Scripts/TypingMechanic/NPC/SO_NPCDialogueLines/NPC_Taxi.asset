@@ -28,3 +28,11 @@ MonoBehaviour:
   - "Ah, America\u2026 very nice."
   - "We\u2019ve reached H Hotel."
   - "That\u2019ll be 18.75 euros."
+  audioClips:
+  - {fileID: 8300000, guid: d7b408dd1ac90724daf96317e7d9ea3b, type: 3}
+  - {fileID: 8300000, guid: 3e53c08d175b1fe47b27630c034257c9, type: 3}
+  - {fileID: 8300000, guid: df3e1360bea3c954a83e9a125cbf60ea, type: 3}
+  - {fileID: 8300000, guid: ceddbd51fed4c2440b0f8ebd6b2bf8c2, type: 3}
+  - {fileID: 8300000, guid: 21ef8186c7f7bac4ba759a531ea86d16, type: 3}
+  - {fileID: 8300000, guid: d93c2e2806abc1d4e9f83dbfa939009b, type: 3}
+  - {fileID: 8300000, guid: 75af238ae701fc44d9019cc5901a9ca6, type: 3}
