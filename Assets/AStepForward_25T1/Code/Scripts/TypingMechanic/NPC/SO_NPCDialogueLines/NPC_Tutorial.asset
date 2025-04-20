@@ -30,3 +30,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 7cd68995bcc53cd488d58ac960734593, type: 3}
   - {fileID: 8300000, guid: 9635266e9590f444aaeec66f11303c09, type: 3}
   - {fileID: 8300000, guid: 2135186ab27a3b24ba3087896de7c0ed, type: 3}
+  npcImages:
+  - {fileID: 21300000, guid: 1d782a64a1460d6468ca4158472ae4ea, type: 3}
+  - {fileID: 21300000, guid: bfde3c9a2fe052c45a57460c7c6abd0e, type: 3}
+  - {fileID: 21300000, guid: ee69a6cc72b525e46a10cd8683adc09b, type: 3}
+  - {fileID: 21300000, guid: 1d782a64a1460d6468ca4158472ae4ea, type: 3}
+  - {fileID: 21300000, guid: bfde3c9a2fe052c45a57460c7c6abd0e, type: 3}

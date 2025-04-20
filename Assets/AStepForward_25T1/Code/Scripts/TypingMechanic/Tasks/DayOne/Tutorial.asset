@@ -12,25 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 411e2b244c212d54e97f779fb268e21b, type: 3}
   m_Name: Tutorial
   m_EditorClassIdentifier: 
-  timeLimitInMinutes: 1
+  timeLimitInMinutes: 2
   sentencesToType:
   - Hallo! Ich bin.. erste Mal in Berlin. Wo ist die Taxis?
   - "Drau\xDFen? Flughafen?"
   - 'Okay, Outside of Flughafen. '
   - "Nein, danke sch\xF6n!"
   - BEENDEN
-  npcDialogueLines:
-  - Guten Tag! Wie kann ich Ihnen helfen?
-  - "Wilkommen in Berlin! Die Taxis finden Sie drau\xDFen vor dem Flughafen."
-  - "Drau\xDFen, Outside of Airport..."
-  - Kann ich Ihnen sonst noch helfen?
-  - "Sch\xF6nen Tag noch, Auf Wiedersehen."
-  translatedDialogueLines:
-  - Good Afternoon! How can I help you?
-  - Welcomet o Berlin! You can find the taxis outside the aiport.
-  - Outside, in front of the airport.
-  - Can I help you with anything else?
-  - Have a nice day, Goodbye.
   translatedSentences:
   - Hello! I am.. first time in Berlin. Where is the taxis?
   - Outside? Airport?

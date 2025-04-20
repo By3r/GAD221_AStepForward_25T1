@@ -108,7 +108,8 @@ public class SentenceValidator : MonoBehaviour
         _typedText = "";
         SkipSpaces();
         SkipPunctuation();
-        UpdateTypingProgress();
+        sentenceTextDisplay.text = "";
+        Invoke(nameof(UpdateTypingProgress), 4f);
 
         npcDialogue?.Speak(_currentSentenceIndex);
         _hasStartedTyping = false;

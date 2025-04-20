@@ -70,9 +70,6 @@ public class SentenceTriggerer : MonoBehaviour
         _taskCompleted = true;
         _taskStarted = false;
 
-        if (taskOngoingPanel != null)
-            taskOngoingPanel.SetActive(false);
-
         if (exclamationMarkIcon != null)
             exclamationMarkIcon.SetActive(false);
 

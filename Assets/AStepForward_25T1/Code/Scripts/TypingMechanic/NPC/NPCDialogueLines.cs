@@ -9,4 +9,6 @@ public class NPCDialogueLines : ScriptableObject
     public List<string> translatedLines = new List<string>();
 
     public List<AudioClip> audioClips = new List<AudioClip>();
+
+    public List<Sprite> npcImages = new List<Sprite>();
 }

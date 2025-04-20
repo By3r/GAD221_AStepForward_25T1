@@ -519,6 +519,112 @@ Transform:
   - {fileID: 4459364303237065519}
   m_Father: {fileID: 9004824249722340952}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6878047611545267824
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1075141434317777080}
+  - component: {fileID: 7619909449043344044}
+  - component: {fileID: 5313529222311347787}
+  - component: {fileID: 8426389442605220645}
+  m_Layer: 0
+  m_Name: Grass (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1075141434317777080
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6878047611545267824}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -0.3793, y: 0.00006, z: 0.2775}
+  m_LocalScale: {x: 0.009937728, y: 1, z: 0.0015903532}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3279226590583248251}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!33 &7619909449043344044
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6878047611545267824}
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &5313529222311347787
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6878047611545267824}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 429754e1d3e0fff4291ee140f0c86369, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &8426389442605220645
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6878047611545267824}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &7415774500059655198
 GameObject:
   m_ObjectHideFlags: 0
@@ -713,7 +819,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 2148796988900bb49b1e773bad5e673b, type: 2}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 100002, guid: fba5e236738a7c940b3a8d031c307794, type: 3}
+    - {fileID: 100006, guid: fba5e236738a7c940b3a8d031c307794, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fba5e236738a7c940b3a8d031c307794, type: 3}
@@ -782,6 +890,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -4683669308469848369, guid: 88ad20456fc9d5c4096c76fbbcbfebcc, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4c2714a27294cd247b4fe4c1803eb385, type: 2}
+    - target: {fileID: -1461304994638716399, guid: 88ad20456fc9d5c4096c76fbbcbfebcc, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b4902ef2e6f2b5446a0a2ed326af872b, type: 2}
     - target: {fileID: 919132149155446097, guid: 88ad20456fc9d5c4096c76fbbcbfebcc, type: 3}
       propertyPath: m_Name
       value: Airport_Seats
@@ -1179,7 +1295,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 2148796988900bb49b1e773bad5e673b, type: 2}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 100002, guid: fba5e236738a7c940b3a8d031c307794, type: 3}
+    - {fileID: 100006, guid: fba5e236738a7c940b3a8d031c307794, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fba5e236738a7c940b3a8d031c307794, type: 3}
@@ -1198,15 +1316,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 88ad20456fc9d5c4096c76fbbcbfebcc, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.7699527
+      value: 0.5589857
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 88ad20456fc9d5c4096c76fbbcbfebcc, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.7699527
+      value: 0.5589857
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 88ad20456fc9d5c4096c76fbbcbfebcc, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.7699527
+      value: 0.5589857
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 88ad20456fc9d5c4096c76fbbcbfebcc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1248,6 +1366,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -4683669308469848369, guid: 88ad20456fc9d5c4096c76fbbcbfebcc, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4c2714a27294cd247b4fe4c1803eb385, type: 2}
+    - target: {fileID: -1461304994638716399, guid: 88ad20456fc9d5c4096c76fbbcbfebcc, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b4902ef2e6f2b5446a0a2ed326af872b, type: 2}
     - target: {fileID: 919132149155446097, guid: 88ad20456fc9d5c4096c76fbbcbfebcc, type: 3}
       propertyPath: m_Name
       value: Airport_Seats (2)
@@ -1338,6 +1464,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 67dc4b49dd046974390a039870630238, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4842629389334590737}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 67dc4b49dd046974390a039870630238, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1075141434317777080}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 67dc4b49dd046974390a039870630238, type: 3}
       insertIndex: -1
@@ -1402,7 +1531,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: baaa65fdc8d7e534780e8fcee7c131b8, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: b0980fead8e28a844a0b4158f206cc9a, type: 2}
   m_BuildHeightMesh: 0
 --- !u!64 &2863230956095213811
 MeshCollider:
@@ -1597,15 +1726,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 88ad20456fc9d5c4096c76fbbcbfebcc, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.7699527
+      value: 0.5589857
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 88ad20456fc9d5c4096c76fbbcbfebcc, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.7699527
+      value: 0.5589857
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 88ad20456fc9d5c4096c76fbbcbfebcc, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.7699527
+      value: 0.5589857
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 88ad20456fc9d5c4096c76fbbcbfebcc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1647,6 +1776,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -4683669308469848369, guid: 88ad20456fc9d5c4096c76fbbcbfebcc, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4c2714a27294cd247b4fe4c1803eb385, type: 2}
+    - target: {fileID: -1461304994638716399, guid: 88ad20456fc9d5c4096c76fbbcbfebcc, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b4902ef2e6f2b5446a0a2ed326af872b, type: 2}
     - target: {fileID: 919132149155446097, guid: 88ad20456fc9d5c4096c76fbbcbfebcc, type: 3}
       propertyPath: m_Name
       value: Airport_Seats (1)
@@ -1671,15 +1808,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 88ad20456fc9d5c4096c76fbbcbfebcc, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.7699527
+      value: 0.5589857
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 88ad20456fc9d5c4096c76fbbcbfebcc, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.7699527
+      value: 0.5589857
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 88ad20456fc9d5c4096c76fbbcbfebcc, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.7699527
+      value: 0.5589857
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 88ad20456fc9d5c4096c76fbbcbfebcc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1721,6 +1858,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5477749408508380018, guid: 88ad20456fc9d5c4096c76fbbcbfebcc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.25
+      objectReference: {fileID: 0}
+    - target: {fileID: -4683669308469848369, guid: 88ad20456fc9d5c4096c76fbbcbfebcc, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4c2714a27294cd247b4fe4c1803eb385, type: 2}
+    - target: {fileID: -1461304994638716399, guid: 88ad20456fc9d5c4096c76fbbcbfebcc, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b4902ef2e6f2b5446a0a2ed326af872b, type: 2}
     - target: {fileID: 919132149155446097, guid: 88ad20456fc9d5c4096c76fbbcbfebcc, type: 3}
       propertyPath: m_Name
       value: Airport_Seats (4)
@@ -1877,15 +2026,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 88ad20456fc9d5c4096c76fbbcbfebcc, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.7699527
+      value: 0.5589857
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 88ad20456fc9d5c4096c76fbbcbfebcc, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.7699527
+      value: 0.5589857
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 88ad20456fc9d5c4096c76fbbcbfebcc, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.7699527
+      value: 0.5589857
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 88ad20456fc9d5c4096c76fbbcbfebcc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1927,6 +2076,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5477749408508380018, guid: 88ad20456fc9d5c4096c76fbbcbfebcc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.25
+      objectReference: {fileID: 0}
+    - target: {fileID: -4683669308469848369, guid: 88ad20456fc9d5c4096c76fbbcbfebcc, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4c2714a27294cd247b4fe4c1803eb385, type: 2}
+    - target: {fileID: -1461304994638716399, guid: 88ad20456fc9d5c4096c76fbbcbfebcc, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b4902ef2e6f2b5446a0a2ed326af872b, type: 2}
     - target: {fileID: 919132149155446097, guid: 88ad20456fc9d5c4096c76fbbcbfebcc, type: 3}
       propertyPath: m_Name
       value: Airport_Seats (5)
