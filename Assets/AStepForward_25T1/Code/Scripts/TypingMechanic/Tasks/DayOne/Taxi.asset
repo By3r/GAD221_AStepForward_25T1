@@ -16,7 +16,7 @@ MonoBehaviour:
   sentencesToType:
   - Hotel H... das ist Adresse hier.
   - Ja! Erste Mal. Ich bin neu hier.
-  - Mein Name ist Lina. Und du?
+  - "Ich hei\xDFe Lina. Und du?"
   - Ich liebe Pizza!! Ich komme aus Amerika.
   - NACH EINIGER ZEIT
   - Ah, danke danke!

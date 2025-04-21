@@ -9,7 +9,7 @@ using UnityEngine;
 public class Sentences : ScriptableObject
 {
     public float timeLimitInMinutes = 1f;
-    [Tooltip("Write all sentences you want the player to copy letter by letter.")]
+    [Tooltip("Write all sentences you want the _player to copy letter by letter.")]
     public List<string> sentencesToType = new List<string>();
 
     [Tooltip("Translations of those sentences (same order).")]
