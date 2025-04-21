@@ -1488,30 +1488,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2011712431}
     m_Modifications:
-    - target: {fileID: 5547367211842393, guid: 7a884d5963f6e154fa1bb6bbf6a84cc8, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5547367211842393, guid: 7a884d5963f6e154fa1bb6bbf6a84cc8, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5547367211842393, guid: 7a884d5963f6e154fa1bb6bbf6a84cc8, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5547367211842393, guid: 7a884d5963f6e154fa1bb6bbf6a84cc8, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 301089435031356275, guid: 7a884d5963f6e154fa1bb6bbf6a84cc8, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 864757740200648650, guid: 7a884d5963f6e154fa1bb6bbf6a84cc8, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 938080831664332659, guid: 7a884d5963f6e154fa1bb6bbf6a84cc8, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1596,14 +1572,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: DayAndTaskCanvas
       objectReference: {fileID: 0}
-    - target: {fileID: 980310281520981867, guid: 7a884d5963f6e154fa1bb6bbf6a84cc8, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1004052320886841062, guid: 7a884d5963f6e154fa1bb6bbf6a84cc8, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1427607335701143988, guid: 7a884d5963f6e154fa1bb6bbf6a84cc8, type: 3}
       propertyPath: sentenceValidator
       value: 
@@ -1612,30 +1580,6 @@ PrefabInstance:
       propertyPath: sentenceValidator
       value: 
       objectReference: {fileID: 997286146}
-    - target: {fileID: 5489953837164754490, guid: 7a884d5963f6e154fa1bb6bbf6a84cc8, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5559079635848874409, guid: 7a884d5963f6e154fa1bb6bbf6a84cc8, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5559079635848874409, guid: 7a884d5963f6e154fa1bb6bbf6a84cc8, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5559079635848874409, guid: 7a884d5963f6e154fa1bb6bbf6a84cc8, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5559079635848874409, guid: 7a884d5963f6e154fa1bb6bbf6a84cc8, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7911104224164986655, guid: 7a884d5963f6e154fa1bb6bbf6a84cc8, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

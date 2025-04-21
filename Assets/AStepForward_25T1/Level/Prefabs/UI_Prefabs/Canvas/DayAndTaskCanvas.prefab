@@ -185,7 +185,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8942499504666958280
 RectTransform:
   m_ObjectHideFlags: 0
@@ -395,6 +395,7 @@ MonoBehaviour:
   hoverText: '!!! TASK COMPLETE !!!'
   defaultText: '!!! AUFGABE GESCHAFFT !!!'
   text: {fileID: 7461332505384176081}
+  isButton: 0
 --- !u!1 &4303258367497348389
 GameObject:
   m_ObjectHideFlags: 0
@@ -890,7 +891,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2302056122669794161, guid: 7e707e220b855b64185f513fc82d6e8e, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4470758683050134100, guid: 7e707e220b855b64185f513fc82d6e8e, type: 3}
       propertyPath: m_Name
@@ -898,7 +899,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4470758683050134100, guid: 7e707e220b855b64185f513fc82d6e8e, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8509207927362944797, guid: 7e707e220b855b64185f513fc82d6e8e, type: 3}
       propertyPath: m_AnchorMax.y
@@ -989,7 +990,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5152192077579275270, guid: 7e707e220b855b64185f513fc82d6e8e, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 9005531762453639783, guid: 7e707e220b855b64185f513fc82d6e8e, type: 3}
       insertIndex: -1
