@@ -1,5 +1,6 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class CursorAppearanceManager : MonoBehaviour
@@ -34,11 +35,23 @@ public class CursorAppearanceManager : MonoBehaviour
             _cursorDictionary[cursorLayer.layer] = cursorLayer.cursorIcon;
         }
 
-        _defaultCursor = cursorImage.sprite; 
+        _defaultCursor = cursorImage.sprite;
     }
 
     private void UpdateCursorAppearance()
     {
+        if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
+        {
+            if (_currentLayer != -2) 
+            {
+                cursorImage.sprite = _defaultCursor;
+                _currentLayer = -2;
+            }
+
+            cursorImage.transform.position = Input.mousePosition;
+            return;
+        }
+
         Ray ray = mainSceneCamera.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit hit))
         {
@@ -60,7 +73,7 @@ public class CursorAppearanceManager : MonoBehaviour
         }
         else
         {
-            if (_currentLayer != -1) 
+            if (_currentLayer != -1)
             {
                 cursorImage.sprite = _defaultCursor;
                 _currentLayer = -1;
