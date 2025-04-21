@@ -20,7 +20,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8931866787546027003
 RectTransform:
   m_ObjectHideFlags: 0
@@ -581,6 +581,7 @@ Transform:
   m_Children:
   - {fileID: 3974901368693055907}
   - {fileID: 2550161533405851312}
+  - {fileID: 4538494724738877862}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &770759618912512816
@@ -850,7 +851,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Informationsschalter
+  m_text: Information- \n sschalter
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 223659617e820e0499bbfaaf55f51d96, type: 2}
   m_sharedMaterial: {fileID: 7482209602005245388, guid: 223659617e820e0499bbfaaf55f51d96, type: 2}
@@ -931,8 +932,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26a0d560cdad3e54a90b2ea614efbdc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverText: INFORMATION DESK
-  defaultText: Informationsschalter
+  hoverText: Information Desk
+  defaultText: Information- \n sschalter
   text: {fileID: 5083849736910395434}
   isButton: 0
 --- !u!1 &6410765634302237810
@@ -1191,3 +1192,77 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 6.3441606, y: 1.792515, z: 0.57428616}
   m_Center: {x: 0.016009267, y: 0.0036627057, z: -0.11077528}
+--- !u!1001 &4139161664454323789
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3872850227928444036}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 1120b00f164f75941abaa65d49587dc6, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.172413
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1120b00f164f75941abaa65d49587dc6, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.2244312
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1120b00f164f75941abaa65d49587dc6, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.34052968
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1120b00f164f75941abaa65d49587dc6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.437461
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1120b00f164f75941abaa65d49587dc6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.18142503
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1120b00f164f75941abaa65d49587dc6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.27466604
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1120b00f164f75941abaa65d49587dc6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.37982184
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1120b00f164f75941abaa65d49587dc6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.37982184
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1120b00f164f75941abaa65d49587dc6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.5964356
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1120b00f164f75941abaa65d49587dc6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.5964356
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1120b00f164f75941abaa65d49587dc6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1120b00f164f75941abaa65d49587dc6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1120b00f164f75941abaa65d49587dc6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 64.98
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1120b00f164f75941abaa65d49587dc6, type: 3}
+      propertyPath: m_Name
+      value: DESK
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1120b00f164f75941abaa65d49587dc6, type: 3}
+--- !u!4 &4538494724738877862 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1120b00f164f75941abaa65d49587dc6, type: 3}
+  m_PrefabInstance: {fileID: 4139161664454323789}
+  m_PrefabAsset: {fileID: 0}

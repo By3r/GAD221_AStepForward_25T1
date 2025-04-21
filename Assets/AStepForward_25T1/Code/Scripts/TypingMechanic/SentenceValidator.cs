@@ -25,16 +25,19 @@ public class SentenceValidator : MonoBehaviour
 
     private string _sentenceToDisplay = "";
     private string _typedText = "";
+
     private bool _hasStartedTyping = false;
     private bool _taskTimerStarted = false;
     private bool _showingTranslation = false;
-    private int _currentSentenceIndex = 0;
-    private bool _isFlashing = false;
-
-    private int _mistakeCount = 0;
-    private int _spacePressCount = 0;
+    private bool _isSentenceLocked = false;
     private bool _warnAboutSpace = true;
     private bool _taskFailed = false;
+    private bool _isFlashing = false; 
+    private bool _startTypingTooltipShown = false;
+
+    private int _mistakeCount = 0;
+    private int _currentSentenceIndex = 0;
+    private int _spacePressCount = 0;
 
     private SentenceTriggerer _currentTriggerer;
     #endregion
@@ -49,6 +52,21 @@ public class SentenceValidator : MonoBehaviour
     {
         GameEvents.OnTimerExpired -= HandleTimerExpired;
         GameEvents.OnTaskRetryRequested -= HandleTaskRetryRequested;
+    }
+
+    private void Update()
+    {
+        if (_taskFailed || _isSentenceLocked || currentSentence == null || _currentSentenceIndex >= currentSentence.sentencesToType.Count) return;
+
+        char? umlautInput = umlautConverter?.GetUmlautCharacter();
+        if (umlautInput.HasValue)
+            ProcessInputChar(umlautInput.Value);
+
+        foreach (char c in Input.inputString)
+        {
+            if (c != '\b')
+                ProcessInputChar(c);
+        }
     }
 
     #region Public Functions
@@ -67,6 +85,8 @@ public class SentenceValidator : MonoBehaviour
 
     public void ShowSentenceTranslation()
     {
+        if (_isSentenceLocked) return;
+
         _showingTranslation = true;
         sentenceTextDisplay.text = currentSentence.translatedSentences[_currentSentenceIndex];
     }
@@ -81,21 +101,6 @@ public class SentenceValidator : MonoBehaviour
     #endregion
 
     #region Private Functions
-    private void Update()
-    {
-        if (_taskFailed || currentSentence == null || _currentSentenceIndex >= currentSentence.sentencesToType.Count) return;
-
-        char? umlautInput = umlautConverter?.GetUmlautCharacter();
-        if (umlautInput.HasValue)
-            ProcessInputChar(umlautInput.Value);
-
-        foreach (char c in Input.inputString)
-        {
-            if (c != '\b')
-                ProcessInputChar(c);
-        }
-    }
-
     private void DisplaySentence()
     {
         if (_currentSentenceIndex >= currentSentence.sentencesToType.Count)
@@ -109,7 +114,14 @@ public class SentenceValidator : MonoBehaviour
         SkipSpaces();
         SkipPunctuation();
         sentenceTextDisplay.text = "";
+        _isSentenceLocked = true;
+        Invoke(nameof(UnlockSentence), 4f);
         Invoke(nameof(UpdateTypingProgress), 4f);
+        if (_startTypingTooltipShown == false) Invoke(nameof(ShowStartTypingTooltip), 4f);
+        
+        npcDialogue?.Speak(_currentSentenceIndex);
+        _hasStartedTyping = false;
+
 
         npcDialogue?.Speak(_currentSentenceIndex);
         _hasStartedTyping = false;
@@ -275,5 +287,15 @@ public class SentenceValidator : MonoBehaviour
 
         UpdateTypingProgress();
     }
-#endregion
+    private void ShowStartTypingTooltip()
+    {
+        tooltip?.ShowTooltip("START TYPING!!");
+        _startTypingTooltipShown = true;
+    }
+
+    private void UnlockSentence()
+    {
+        _isSentenceLocked = false;
+    }
+    #endregion
 }
