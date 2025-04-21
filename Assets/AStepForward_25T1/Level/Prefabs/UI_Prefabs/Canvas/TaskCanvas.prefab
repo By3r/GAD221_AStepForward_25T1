@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 2660543544671569766}
   - component: {fileID: 7693128148697415152}
   - component: {fileID: 5993017124205046497}
-  - component: {fileID: 5466764429397155660}
   m_Layer: 5
   m_Name: StartTaskButton
   m_TagString: Untagged
@@ -156,19 +155,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 161.37294, y: 29.531189, z: 44.705654}
   m_Center: {x: 0.2652365, y: 14.265595, z: 7.8388333}
---- !u!114 &5466764429397155660
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 617531780798275441}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae65a6668b7caf24c9b8aafe3821539c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sentenceTriggerer: {fileID: 0}
 --- !u!1 &3046792530853400661
 GameObject:
   m_ObjectHideFlags: 0
@@ -604,7 +590,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hoverText: Wokrs
   defaultText: Doesnt work
-  _text: {fileID: 4092545804337906818}
+  text: {fileID: 0}
 --- !u!1 &4996219713529880365
 GameObject:
   m_ObjectHideFlags: 0

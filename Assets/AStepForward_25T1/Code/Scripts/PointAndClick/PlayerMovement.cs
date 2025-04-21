@@ -7,8 +7,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Camera mainCamera;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private NavMeshAgent navMeshAgent;
-    [SerializeField] private Animator animator; 
+    [SerializeField] private Animator animator;
 
+    private bool _uiLocked;
     private bool _movementLocked = false;
     #endregion
 
@@ -28,15 +29,25 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        if (_movementLocked) return;
+        _uiLocked = UIManager.Instance != null && UIManager.Instance.IsAnyUIOpen;
+
+        bool isLocked = _movementLocked || _uiLocked;
+
+        if (isLocked)
+        {
+            navMeshAgent.ResetPath();
+            UpdateAnimation(0f);
+            return;
+        }
 
         if (Input.GetMouseButtonDown(0))
         {
             MovePlayerIfDestinationIsValid();
         }
 
-        UpdateAnimation();
+        UpdateAnimation(navMeshAgent.velocity.magnitude);
     }
+
 
     private void MovePlayerIfDestinationIsValid()
     {
@@ -48,12 +59,9 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void UpdateAnimation()
+    private void UpdateAnimation(float speed)
     {
         if (animator == null) return;
-
-        float speed = navMeshAgent.velocity.magnitude;
-
-        animator.SetBool("IsWalking", speed > 0.1f); 
+        animator.SetBool("IsWalking", speed > 0.1f);
     }
 }

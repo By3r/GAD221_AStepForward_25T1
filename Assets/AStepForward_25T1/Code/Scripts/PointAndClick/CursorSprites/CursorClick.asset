@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: CursorClick
   m_EditorClassIdentifier: 
   layer: 0
-  cursorIcon: {fileID: 21300000, guid: 9c34db2f107c8a940b46ff352e28d207, type: 3}
+  cursorIcon: {fileID: 21300000, guid: eeeaa84520a29f44bb7479cdfd9aceac, type: 3}
