@@ -1,63 +1,47 @@
-using System.Collections;
 using UnityEngine;
 
-public class TextSlider : MonoBehaviour
+public class YOffsetMoverLoop : MonoBehaviour
 {
     #region Variables
-    [Header("Path Points")]
-    [SerializeField] private Transform startPoint;
-    [SerializeField] private Transform endPoint;
+    [SerializeField] private Transform startPointTransform;
+    [SerializeField] private Transform endPointTransform;
+    [SerializeField] private float yOffset = 1.2f;
+    [SerializeField] private float moveSpeed = 2f;
 
-    [Header("Movement Settings")]
-    [SerializeField] private float speed = 1f;
-    [SerializeField] private float yOffsetRange = 1f;
-    [SerializeField] private float zOffsetRange = 0.5f;
-    [SerializeField] private float resetDelay = 1f;
-
-    private Vector3 _currentStart;
-    private Vector3 _currentEnd;
-    private Vector3 _direction;
-    private bool _isMoving = true;
+    private Vector3 _startPosition;
+    private Vector3 _endPosition;
+    private Vector3 _currentTarget;
     #endregion
 
     void Start()
     {
-        SetPathwithOffsets();
-        transform.position = _currentStart;
+        _startPosition = new Vector3(
+            startPointTransform.position.x,
+            startPointTransform.position.y + yOffset,
+            startPointTransform.position.z
+        );
+
+        _endPosition = new Vector3(
+            endPointTransform.position.x,
+            endPointTransform.position.y + yOffset,
+            endPointTransform.position.z
+        );
+
+        transform.position = _startPosition;
+        _currentTarget = _endPosition;
     }
 
     void Update()
     {
-        if (!_isMoving) return;
+        transform.position = Vector3.MoveTowards(transform.position, _currentTarget, moveSpeed * Time.deltaTime);
 
-        transform.position += _direction * speed * Time.deltaTime;
-
-        if (Vector3.Distance(transform.position, _currentEnd) < 0.1f)
+        if (Vector3.Distance(transform.position, _currentTarget) < 0.01f)
         {
-            StartCoroutine(ResetTextPosition());
+            if (_currentTarget == _endPosition)
+            {
+                transform.position = _startPosition;
+                _currentTarget = _endPosition;
+            }
         }
-    }
-
-    private void SetPathwithOffsets()
-    {
-        float randomYOffset = Random.Range(-yOffsetRange, yOffsetRange);
-        float randomZOffset = Random.Range(-zOffsetRange, zOffsetRange);
-
-        Vector3 offset = new Vector3(0f, randomYOffset, randomZOffset);
-        _currentStart = startPoint.position + offset;
-        _currentEnd = endPoint.position + offset;
-        _direction = (_currentEnd - _currentStart).normalized;
-    }
-
-    private IEnumerator ResetTextPosition()
-    {
-        _isMoving = false;
-
-        yield return new WaitForSeconds(resetDelay);
-
-        SetPathwithOffsets();
-        transform.position = _currentStart;
-
-        _isMoving = true;
     }
 }

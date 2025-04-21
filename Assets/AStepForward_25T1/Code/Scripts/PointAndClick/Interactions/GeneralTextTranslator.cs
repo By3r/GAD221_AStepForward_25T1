@@ -8,6 +8,7 @@ public class GeneralTextTranslator : MonoBehaviour, IPointerEnterHandler, IPoint
     [SerializeField] private string hoverText;
     [SerializeField] private string defaultText;
     [SerializeField] private TMP_Text text;
+    [SerializeField] private bool isButton;
 
     private bool _isHovered = false;
     private bool _isClicked = false;
@@ -33,7 +34,7 @@ public class GeneralTextTranslator : MonoBehaviour, IPointerEnterHandler, IPoint
     {
         _isHovered = true;
 
-        if (_isClicked) text.text = hoverText;
+        if (_isClicked || isButton) text.text = hoverText;
     }
 
     public void OnPointerExit(PointerEventData eventData)

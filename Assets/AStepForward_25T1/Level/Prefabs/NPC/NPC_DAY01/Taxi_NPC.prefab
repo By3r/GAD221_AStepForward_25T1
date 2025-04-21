@@ -180,6 +180,7 @@ GameObject:
   - component: {fileID: 5337074934368780833}
   - component: {fileID: 5425940629498761843}
   - component: {fileID: 5825273876432852883}
+  - component: {fileID: 6726278015902324200}
   m_Layer: 6
   m_Name: Taxi_NPC
   m_TagString: Untagged
@@ -288,6 +289,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueLines: {fileID: 11400000, guid: b872b13d996b432428c8607d59527403, type: 2}
   dialogueText: {fileID: 0}
+  audioSource: {fileID: 6726278015902324200}
+  npcImageUI: {fileID: 0}
 --- !u!65 &5825273876432852883
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -309,6 +312,102 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.9580626, y: 2.1295998, z: 6.320544}
   m_Center: {x: -0.00070571917, y: 0.27992716, z: -0.30544}
+--- !u!82 &6726278015902324200
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6661360287192858092}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 200
+  DopplerLevel: 1
+  MinDistance: 6.41679
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &8339214322586755874
 GameObject:
   m_ObjectHideFlags: 0
@@ -649,8 +748,43 @@ PrefabInstance:
     - {fileID: 5466764429397155660, guid: 146640afb216571488fa0d55ee538d5e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 617531780798275441, guid: 146640afb216571488fa0d55ee538d5e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8484627031493247430}
   m_SourcePrefab: {fileID: 100100000, guid: 146640afb216571488fa0d55ee538d5e, type: 3}
+--- !u!1 &856550825232133960 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 617531780798275441, guid: 146640afb216571488fa0d55ee538d5e, type: 3}
+  m_PrefabInstance: {fileID: 248539715953340473}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8484627031493247430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 856550825232133960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26a0d560cdad3e54a90b2ea614efbdc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverText: START
+  defaultText: STARTEN
+  text: {fileID: 3064546168962266946}
+  isButton: 1
+--- !u!114 &3064546168962266946 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3023473422622394235, guid: 146640afb216571488fa0d55ee538d5e, type: 3}
+  m_PrefabInstance: {fileID: 248539715953340473}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &3888571876806814763 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3928271419042782226, guid: 146640afb216571488fa0d55ee538d5e, type: 3}
