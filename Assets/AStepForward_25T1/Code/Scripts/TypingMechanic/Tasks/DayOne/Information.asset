@@ -10,22 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 411e2b244c212d54e97f779fb268e21b, type: 3}
-  m_Name: Taxi
+  m_Name: Information
   m_EditorClassIdentifier: 
-  timeLimitInMinutes: 3
+  timeLimitInMinutes: 2
   sentencesToType:
-  - Hotel H... das ist Adresse hier.
-  - Ja! Erste Mal. Ich bin neu hier.
-  - "Ich hei\xDFe Lina. Und du?"
-  - Ich liebe Pizza!! Ich komme aus Amerika.
-  - ///NACH EINIGER ZEIT///
-  - Ah, danke danke!
+  - Hallo! Ich bin.. erste Mal in Berlin. Wo ist die Taxis?
+  - "Drau\xDFen? Flughafen?"
+  - 'Okay, Outside of Flughafen. '
+  - "Nein, danke sch\xF6n!"
   - BEENDEN
   translatedSentences:
-  - Hotel H... this is address here.
-  - Yes! First time. I am new here.
-  - My name is Lina. And you?
-  - ' I love pizza!! I come from America.'
-  - ///AFTER SOME TIME///
-  - Oh Thank you Thank you!
+  - Hello! I am.. first time in Berlin. Where is the taxis?
+  - Outside? Airport?
+  - Okay, Outside of Aiport.
+  - No, Thank you!
   - EXIT

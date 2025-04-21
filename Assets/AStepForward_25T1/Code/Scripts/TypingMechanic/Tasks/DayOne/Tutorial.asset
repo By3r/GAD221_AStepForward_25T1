@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 411e2b244c212d54e97f779fb268e21b, type: 3}
   m_Name: Tutorial
   m_EditorClassIdentifier: 
-  timeLimitInMinutes: 2
+  timeLimitInMinutes: 1
   sentencesToType:
-  - Hallo! Ich bin.. erste Mal in Berlin. Wo ist die Taxis?
-  - "Drau\xDFen? Flughafen?"
-  - 'Okay, Outside of Flughafen. '
-  - "Nein, danke sch\xF6n!"
-  - BEENDEN
-  translatedSentences:
-  - Hello! I am.. first time in Berlin. Where is the taxis?
-  - Outside? Airport?
-  - Okay, Outside of Aiport.
-  - No, Thank you!
+  - I need to mimic this text?
+  - Yes
+  - Cool!
+  - Okay
   - EXIT
+  translatedSentences:
+  - Ich soll diesen Text nachmachen?
+  - Ja
+  - Cool! (Remains the same in German)
+  - Okay (Remains the same in German)
+  - BEENDEN

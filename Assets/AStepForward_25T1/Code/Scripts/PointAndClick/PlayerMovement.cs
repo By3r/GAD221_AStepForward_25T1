@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Camera mainCamera;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private NavMeshAgent navMeshAgent;
+    [SerializeField] private Animator animator; 
 
     private bool _movementLocked = false;
     #endregion
@@ -25,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
         GameEvents.OnTaskFailed -= _ => _movementLocked = false;
     }
 
-    void Update()
+    private void Update()
     {
         if (_movementLocked) return;
 
@@ -33,6 +34,8 @@ public class PlayerMovement : MonoBehaviour
         {
             MovePlayerIfDestinationIsValid();
         }
+
+        UpdateAnimation();
     }
 
     private void MovePlayerIfDestinationIsValid()
@@ -43,5 +46,14 @@ public class PlayerMovement : MonoBehaviour
         {
             navMeshAgent.SetDestination(hit.point);
         }
+    }
+
+    private void UpdateAnimation()
+    {
+        if (animator == null) return;
+
+        float speed = navMeshAgent.velocity.magnitude;
+
+        animator.SetBool("IsWalking", speed > 0.1f); 
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
 
@@ -17,6 +18,7 @@ public class DaySystem : MonoBehaviour
     [SerializeField] private TMP_Text successMessageText;
     [SerializeField] private GameObject dayStartPanel;
     [SerializeField] private CanvasGroup dayStartCanvasGroup;
+    [SerializeField] private GameObject thankYouForPlayerPanel;
 
     private int _currentDay = 1;
     private int _maximumDays = 10;
@@ -65,6 +67,7 @@ public class DaySystem : MonoBehaviour
 
         if (completedTasks.Count >= totalRequiredTasksPerDay)
         {
+            thankYouForPlayerPanel.SetActive(true);    
             Debug.Log("Day Completed!");
             AdvanceDay();
         }
