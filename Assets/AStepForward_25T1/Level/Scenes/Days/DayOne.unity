@@ -1017,7 +1017,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   teleportID: Airport
   teleportDestination: {fileID: 1066848480}
-  unlockedAtStart: 0
+  unlockedAtStart: 1
 --- !u!1 &1091888359 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8294144600291919056, guid: a6129289e9cbcc4478c6ee6b55309a50, type: 3}

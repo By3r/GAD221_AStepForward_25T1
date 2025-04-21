@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.AI;
 
 public class TeleportManager : MonoBehaviour
 {
@@ -38,25 +39,19 @@ public class TeleportManager : MonoBehaviour
     public void TeleportPlayerTo(string teleportID, GameObject player)
     {
         if (!teleportPoints.ContainsKey(teleportID))
-        {
             return;
-        }
 
         var point = teleportPoints[teleportID];
 
-        if (!point.IsUnlocked)
-        {
+        if (!point.IsUnlocked || player == null)
             return;
-        }
 
-        if (player == null)
+        NavMeshAgent agent = player.GetComponent<NavMeshAgent>();
+        if (agent != null)
         {
-            return;
+            agent.Warp(point.Destination.position);
         }
-
-        player.transform.position = point.Destination.position;
     }
-
 
     public bool IsTeleportUnlocked(string teleportID)
     {
