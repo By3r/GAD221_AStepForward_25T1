@@ -57,7 +57,6 @@ public class DaySystem : MonoBehaviour
 
         if (successPanel != null && successMessageText != null)
         {
-            Debug.Log("Showing Success Panel");
 
             successPanel.SetActive(true);
             successMessageText.text = $"{completedTasks.Count} / {totalRequiredTasksPerDay}";

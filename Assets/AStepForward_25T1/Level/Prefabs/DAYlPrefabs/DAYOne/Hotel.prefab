@@ -380,7 +380,6 @@ GameObject:
   - component: {fileID: 2354414641176140928}
   - component: {fileID: 7038685408025930284}
   - component: {fileID: 4830414910946212985}
-  - component: {fileID: 5077508576979693774}
   - component: {fileID: 3025063689488785175}
   - component: {fileID: 1988219059146135759}
   m_Layer: 0
@@ -457,22 +456,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &5077508576979693774
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6236442960938552786}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 753f36a8ea380014ebeadd875de123f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  taskToWatch: {fileID: 11400000, guid: 9c15afef9e07aac4599f05c156d9a4de, type: 2}
-  targetObjectToBecomeTeleport: {fileID: 6236442960938552786}
-  player: {fileID: 0}
-  teleportID: Airport
 --- !u!114 &3025063689488785175
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2053,9 +2036,6 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a6899129b71211349a945377e1649616, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6951223017117746750}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a6899129b71211349a945377e1649616, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 216301178270377134}
   m_SourcePrefab: {fileID: 100100000, guid: a6899129b71211349a945377e1649616, type: 3}
 --- !u!1 &8543849179385873151 stripped
@@ -2063,22 +2043,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: a6899129b71211349a945377e1649616, type: 3}
   m_PrefabInstance: {fileID: 8813738389942828974}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6951223017117746750
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8543849179385873151}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 753f36a8ea380014ebeadd875de123f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  taskToWatch: {fileID: 0}
-  targetObjectToBecomeTeleport: {fileID: 0}
-  player: {fileID: 0}
-  teleportID: 
 --- !u!114 &216301178270377134
 MonoBehaviour:
   m_ObjectHideFlags: 0

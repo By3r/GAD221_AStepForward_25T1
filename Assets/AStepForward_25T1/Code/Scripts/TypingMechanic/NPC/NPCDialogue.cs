@@ -11,6 +11,8 @@ public class NPCDialogue : MonoBehaviour
     [SerializeField] private Image npcImageUI;
     [SerializeField] private Image backgroundImageUI;
 
+    private AudioClip _lastClipPlayed = null;
+    private int _lastSentenceIndex = -1;
     private string _currentLine = "";
     private string _translatedLine = "";
     #endregion
@@ -30,6 +32,9 @@ public class NPCDialogue : MonoBehaviour
                 audioSource.clip = dialogueLines.audioClips[sentenceIndex];
                 audioSource.Play();
                 BackgroundMusicManager.Instance?.FadeOutMusic();
+
+                _lastClipPlayed = audioSource.clip;
+                _lastSentenceIndex = sentenceIndex;
             }
 
             if (sentenceIndex < dialogueLines.npcImages.Count && npcImageUI != null)
@@ -58,6 +63,17 @@ public class NPCDialogue : MonoBehaviour
 
             if (backgroundImageUI != null)
                 backgroundImageUI.gameObject.SetActive(false);
+        }
+    }
+    public void ReplaySpecificLine(int sentenceIndex)
+    {
+        if (sentenceIndex < 0 || sentenceIndex >= dialogueLines.audioClips.Count) return;
+
+        AudioClip clip = dialogueLines.audioClips[sentenceIndex];
+        if (clip != null)
+        {
+            audioSource.clip = clip;
+            audioSource.Play();
         }
     }
 
