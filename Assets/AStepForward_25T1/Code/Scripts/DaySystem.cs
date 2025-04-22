@@ -76,7 +76,7 @@ public class DaySystem : MonoBehaviour
         if (completedTasks.Contains(task)) return;
 
         failedTasks.Add(task);
-        Debug.Log($"Task {task.name} failed. retry");
+        // Debug.Log($"Task {task.name} failed. retry");
 
         if (failPanel != null)
             failPanel.SetActive(true);

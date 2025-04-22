@@ -3,7 +3,7 @@ using UnityEngine;
 public class TaskAsTeleport : MonoBehaviour
 {
     [SerializeField] private string teleportID;
-    private bool _canTeleport = false;
+    [SerializeField] private bool _canTeleport = false;
     private GameObject _player;
 
     private void Start()
