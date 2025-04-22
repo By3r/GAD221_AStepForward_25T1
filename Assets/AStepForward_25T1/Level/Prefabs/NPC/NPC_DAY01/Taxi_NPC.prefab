@@ -273,6 +273,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   taskToWatch: {fileID: 11400000, guid: 9c15afef9e07aac4599f05c156d9a4de, type: 2}
   targetObjectToBecomeTeleport: {fileID: 6661360287192858092}
+  player: {fileID: 0}
+  teleportID: 
 --- !u!114 &5269182723456909740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -447,6 +449,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7404266125482105838}
   - component: {fileID: 7131352212329345858}
+  - component: {fileID: 4090188338242129566}
   m_Layer: 6
   m_Name: ExclamationMark_Icon
   m_TagString: Untagged
@@ -521,6 +524,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4090188338242129566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8339214322586755874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 047507a1798aee541bc4dd94e3797c0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floatSpeed: 3
+  floatAmp: 0.2
 --- !u!1001 &248539715953340473
 PrefabInstance:
   m_ObjectHideFlags: 0
