@@ -4,24 +4,26 @@ using UnityEngine.UI;
 
 public class NPCDialogue : MonoBehaviour
 {
+    #region Variables
     [SerializeField] private NPCDialogueLines dialogueLines;
     [SerializeField] private TMP_Text dialogueText;
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private Image npcImageUI;
+    [SerializeField] private Image backgroundImageUI;
 
-    private string currentLine = "";
-    private string translatedLine = "";
-
+    private string _currentLine = "";
+    private string _translatedLine = "";
+    #endregion
     public void Speak(int sentenceIndex)
     {
         if (dialogueLines == null || dialogueLines.lines.Count == 0) return;
 
         if (sentenceIndex < dialogueLines.lines.Count)
         {
-            currentLine = dialogueLines.lines[sentenceIndex];
-            dialogueText.text = currentLine;
+            _currentLine = dialogueLines.lines[sentenceIndex];
+            dialogueText.text = _currentLine;
 
-            translatedLine = sentenceIndex < dialogueLines.translatedLines.Count ? dialogueLines.translatedLines[sentenceIndex]: "";
+            _translatedLine = sentenceIndex < dialogueLines.translatedLines.Count ? dialogueLines.translatedLines[sentenceIndex] : "";
 
             if (sentenceIndex < dialogueLines.audioClips.Count && dialogueLines.audioClips[sentenceIndex] != null)
             {
@@ -34,25 +36,42 @@ public class NPCDialogue : MonoBehaviour
             {
                 npcImageUI.sprite = dialogueLines.npcImages[sentenceIndex];
             }
+
+            if (backgroundImageUI != null)
+            {
+                bool showBG = sentenceIndex < dialogueLines.showBackgroundImage.Count && dialogueLines.showBackgroundImage[sentenceIndex];
+                if (showBG && sentenceIndex < dialogueLines.backgroundImages.Count && dialogueLines.backgroundImages[sentenceIndex] != null)
+                {
+                    backgroundImageUI.gameObject.SetActive(true);
+                    backgroundImageUI.sprite = dialogueLines.backgroundImages[sentenceIndex];
+                }
+                else
+                {
+                    backgroundImageUI.gameObject.SetActive(false);
+                }
+            }
         }
         else
         {
             dialogueText.text = "";
             RestoreMusic();
+
+            if (backgroundImageUI != null)
+                backgroundImageUI.gameObject.SetActive(false);
         }
     }
 
     public void ShowTranslation()
     {
-        if (!string.IsNullOrEmpty(translatedLine))
+        if (!string.IsNullOrEmpty(_translatedLine))
         {
-            dialogueText.text = translatedLine;
+            dialogueText.text = _translatedLine;
         }
     }
 
     public void HideTranslation()
     {
-        dialogueText.text = currentLine;
+        dialogueText.text = _currentLine;
     }
 
     public bool IsSpeaking()

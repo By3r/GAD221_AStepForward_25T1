@@ -407,7 +407,7 @@ Transform:
   m_GameObject: {fileID: 2830029774807917687}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.5862742, z: -0, w: 0.8101127}
-  m_LocalPosition: {x: 0.25, y: 1.535, z: 0.89}
+  m_LocalPosition: {x: 0.44, y: 1.63, z: 0.72}
   m_LocalScale: {x: 0.055963304, y: 0.024015317, z: 0.059091583}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -576,7 +576,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &3872850227928444036
 Transform:
@@ -616,8 +616,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.641141, y: 1.7885183, z: 2.742443}
+  m_Center: {x: 0.32057056, y: 0.39425942, z: 0.082341656}
 --- !u!114 &8513177682296302578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1050,7 +1050,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 0
 --- !u!224 &2550161533405851312
 RectTransform:
@@ -1224,6 +1224,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DESK
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1120b00f164f75941abaa65d49587dc6, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1305,8 +1309,31 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 35378d19f37f57c489add3e009a49ad7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7643355985094107799}
   m_SourcePrefab: {fileID: 100100000, guid: 35378d19f37f57c489add3e009a49ad7, type: 3}
+--- !u!1 &7132909048476849822 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 35378d19f37f57c489add3e009a49ad7, type: 3}
+  m_PrefabInstance: {fileID: 7943302101469031375}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7643355985094107799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7132909048476849822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccbc33eb92c5dd34fbb8f4c63f025cab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectionRange: 7
+  rotationSpeed: 5
+  player: {fileID: 0}
 --- !u!4 &7617555441359359012 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 35378d19f37f57c489add3e009a49ad7, type: 3}

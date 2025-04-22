@@ -11,4 +11,8 @@ public class NPCDialogueLines : ScriptableObject
     public List<AudioClip> audioClips = new List<AudioClip>();
 
     public List<Sprite> npcImages = new List<Sprite>();
+
+    public List<Sprite> backgroundImages = new List<Sprite>();
+
+    public List<bool> showBackgroundImage = new List<bool>();
 }

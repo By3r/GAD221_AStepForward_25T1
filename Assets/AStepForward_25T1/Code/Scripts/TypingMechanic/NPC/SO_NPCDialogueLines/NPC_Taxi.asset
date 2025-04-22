@@ -44,3 +44,12 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 4fb722caf23e87e46ae7c923e97e87f1, type: 3}
   - {fileID: 21300000, guid: fc6af0bc9ba05964da7aae374417bb1a, type: 3}
   - {fileID: 21300000, guid: 226c944d60d85a44baf5ab3de451d1d4, type: 3}
+  backgroundImages:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 21300000, guid: 32bcda8d7aa6e40409eb35b4a88e6e65, type: 3}
+  - {fileID: 21300000, guid: 32bcda8d7aa6e40409eb35b4a88e6e65, type: 3}
+  - {fileID: 21300000, guid: 32bcda8d7aa6e40409eb35b4a88e6e65, type: 3}
+  - {fileID: 21300000, guid: 32bcda8d7aa6e40409eb35b4a88e6e65, type: 3}
+  - {fileID: 21300000, guid: 32bcda8d7aa6e40409eb35b4a88e6e65, type: 3}
+  showBackgroundImage: 00000101010101

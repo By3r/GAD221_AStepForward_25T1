@@ -13,6 +13,14 @@ public class PlayerMovement : MonoBehaviour
     private bool _movementLocked = false;
     #endregion
 
+    private void Awake()
+    {
+        if (navMeshAgent != null)
+        {
+            navMeshAgent.updateRotation = false; 
+        }
+    }
+
     private void OnEnable()
     {
         GameEvents.OnTaskStarted += _ => _movementLocked = true;
@@ -30,7 +38,6 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         _uiLocked = UIManager.Instance != null && UIManager.Instance.IsAnyUIOpen;
-
         bool isLocked = _movementLocked || _uiLocked;
 
         if (isLocked)
@@ -46,8 +53,8 @@ public class PlayerMovement : MonoBehaviour
         }
 
         UpdateAnimation(navMeshAgent.velocity.magnitude);
+        UpdateRotation();
     }
-
 
     private void MovePlayerIfDestinationIsValid()
     {
@@ -63,5 +70,20 @@ public class PlayerMovement : MonoBehaviour
     {
         if (animator == null) return;
         animator.SetBool("IsWalking", speed > 0.1f);
+    }
+
+    private void UpdateRotation()
+    {
+        if (navMeshAgent.velocity.sqrMagnitude > 0.1f)
+        {
+            Vector3 direction = navMeshAgent.velocity.normalized;
+            direction.y = 0f;
+
+            if (direction != Vector3.zero)
+            {
+                Quaternion lookRotation = Quaternion.LookRotation(direction);
+                transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, 10f * Time.deltaTime);
+            }
+        }
     }
 }
