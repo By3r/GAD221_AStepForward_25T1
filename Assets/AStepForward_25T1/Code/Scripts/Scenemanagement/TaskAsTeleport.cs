@@ -25,7 +25,6 @@ public class TaskAsTeleport : MonoBehaviour
 
         if (TeleportManager.Instance != null)
         {
-            Debug.Log("attempting to teleport");
             TeleportManager.Instance.TeleportPlayerTo(teleportID, _player);
         }
     }

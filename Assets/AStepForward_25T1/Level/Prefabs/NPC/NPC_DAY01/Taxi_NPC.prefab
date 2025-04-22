@@ -177,6 +177,8 @@ GameObject:
   - component: {fileID: 8940426670495419719}
   - component: {fileID: 7517487658206806665}
   - component: {fileID: 8359139021311995796}
+  - component: {fileID: 395681019260847561}
+  - component: {fileID: 5269182723456909740}
   - component: {fileID: 5337074934368780833}
   - component: {fileID: 5425940629498761843}
   - component: {fileID: 5825273876432852883}
@@ -257,6 +259,33 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &395681019260847561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6661360287192858092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 753f36a8ea380014ebeadd875de123f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  taskToWatch: {fileID: 11400000, guid: 9c15afef9e07aac4599f05c156d9a4de, type: 2}
+  targetObjectToBecomeTeleport: {fileID: 6661360287192858092}
+--- !u!114 &5269182723456909740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6661360287192858092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d82dfa630859c714daa5c2bd35a60594, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teleportID: HotelH
 --- !u!114 &5337074934368780833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -773,7 +802,6 @@ MonoBehaviour:
   hoverText: START
   defaultText: STARTEN
   text: {fileID: 3064546168962266946}
-  isButton: 1
 --- !u!114 &3064546168962266946 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3023473422622394235, guid: 146640afb216571488fa0d55ee538d5e, type: 3}

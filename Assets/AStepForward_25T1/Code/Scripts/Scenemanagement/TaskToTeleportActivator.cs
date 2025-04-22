@@ -5,6 +5,8 @@ public class TaskToTeleportActivator : MonoBehaviour
     #region Variables
     [SerializeField] private Sentences taskToWatch;
     [SerializeField] private GameObject targetObjectToBecomeTeleport;
+    [SerializeField] private GameObject player;
+    [SerializeField] private string teleportID;
     #endregion
 
     private void OnEnable()
@@ -21,16 +23,34 @@ public class TaskToTeleportActivator : MonoBehaviour
     {
         if (completedTask != taskToWatch || targetObjectToBecomeTeleport == null) return;
 
-        Invoke("ChangeLayer", 2f);
+        player = GameObject.FindGameObjectWithTag("Player");
+
+        Invoke(nameof(UnlockAndTeleport), 2f);
     }
 
-    private void ChangeLayer()
+    private void UnlockAndTeleport()
     {
-        targetObjectToBecomeTeleport.layer = LayerMask.NameToLayer("Teleport"); var teleportScript = targetObjectToBecomeTeleport.GetComponent<TaskAsTeleport>();
+        targetObjectToBecomeTeleport.layer = LayerMask.NameToLayer("Teleport");
+
+        var teleportScript = targetObjectToBecomeTeleport.GetComponent<TaskAsTeleport>();
         if (teleportScript != null)
         {
             teleportScript.EnableTeleportMode();
-            Debug.Log($"'{targetObjectToBecomeTeleport.name}' is now a teleport point!");
         }
+
+        if (player != null && TeleportManager.Instance != null)
+        {
+            StartCoroutine(TeleportWithFade(player, teleportID));
+        }
+    }
+
+    private System.Collections.IEnumerator TeleportWithFade(GameObject player, string teleportID)
+    {
+        yield return FadeManager.Instance.FadeOut();
+
+        TeleportManager.Instance.TeleportPlayerTo(teleportID, player);
+
+        yield return new WaitForSeconds(0.2f); 
+        yield return FadeManager.Instance.FadeIn(); 
     }
 }
