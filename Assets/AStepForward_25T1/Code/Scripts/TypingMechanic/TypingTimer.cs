@@ -1,20 +1,31 @@
 using UnityEngine;
-using System;
 using TMPro;
 
 public class TypingTimer : MonoBehaviour
 {
-    #region Variables
-    public float timeLimitInSeconds = 10f;
-
+    [Header("Timer UI")]
     [SerializeField] private TMP_Text timerText;
+
+    public float timeLimitInSeconds = 60f;
 
     private float _remainingTime;
     private bool _isRunning = false;
     private bool _hasFailed = false;
+    private Sentences _currentTask;
 
-    public Action OnTimeOut;
-    #endregion
+    private void OnEnable()
+    {
+        GameEvents.OnTaskStarted += StartTimer;
+        GameEvents.OnTaskCompleted += _ => StopTimer();
+        GameEvents.OnTaskFailed += _ => StopTimer();
+    }
+
+    private void OnDisable()
+    {
+        GameEvents.OnTaskStarted -= StartTimer;
+        GameEvents.OnTaskCompleted -= _ => StopTimer();
+        GameEvents.OnTaskFailed -= _ => StopTimer();
+    }
 
     private void Update()
     {
@@ -25,19 +36,21 @@ public class TypingTimer : MonoBehaviour
 
         if (_remainingTime <= 0f)
         {
-            _hasFailed = true;
             _isRunning = false;
+            _hasFailed = true;
             timerText.text = "0:00";
-            OnTimeOut?.Invoke();
+            GameEvents.OnTimerExpired?.Invoke(_currentTask);
         }
     }
 
-    #region Public Functions
-    public void StartTimer()
+    public void StartTimer(Sentences sentenceData)
     {
-        _remainingTime = timeLimitInSeconds;
+        _currentTask = sentenceData;
+        _remainingTime = sentenceData.timeLimitInMinutes * 60f;
         _isRunning = true;
         _hasFailed = false;
+
+        GameEvents.OnTimerStarted?.Invoke(sentenceData);
     }
 
     public void StopTimer()
@@ -50,8 +63,8 @@ public class TypingTimer : MonoBehaviour
         _remainingTime = timeLimitInSeconds;
         _isRunning = false;
         _hasFailed = false;
+        timerText.text = FormatTime(_remainingTime);
     }
-    #endregion 
 
     private string FormatTime(float time)
     {

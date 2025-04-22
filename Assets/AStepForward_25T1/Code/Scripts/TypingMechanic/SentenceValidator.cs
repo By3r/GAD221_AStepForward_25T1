@@ -5,15 +5,8 @@ using UnityEngine;
 public class SentenceValidator : MonoBehaviour
 {
     #region Variables
+    [Header("UI")]
     [SerializeField] private TMP_Text sentenceTextDisplay;
-    public Sentences currentSentence;
-    public NPCDialogue npcDialogue;
-
-    [Header("Colours")]
-    [SerializeField] private Color correctLettersColour = Color.green;
-    [SerializeField] private Color letterToTypeColour = Color.cyan;
-    [SerializeField] private Color incompleteLettersColour = Color.grey;
-    [SerializeField] private Color incorrectLetterColour = Color.red;
 
     [Header("Script References")]
     [SerializeField] private Tooltip tooltip;
@@ -21,40 +14,81 @@ public class SentenceValidator : MonoBehaviour
     [SerializeField] private TypingTimer typingTimer;
     [SerializeField] private DaySystem daySystem;
 
-    private int _mistakeCount = 0;
-    private bool _hasStartedTyping = false;
-    private int _spacePressCount = 0;
-    private bool _warnAboutSpace = true;
-    private bool _isFlashing = false;
-    private int _currentSentenceIndex = 0;
+    [Header("Colors")]
+    [SerializeField] private Color correctLettersColour = Color.green;
+    [SerializeField] private Color letterToTypeColour = Color.cyan;
+    [SerializeField] private Color incompleteLettersColour = Color.grey;
+    [SerializeField] private Color incorrectLetterColour = Color.red;
+
+    public Sentences currentSentence;
+    public NPCDialogue npcDialogue;
+
     private string _sentenceToDisplay = "";
     private string _typedText = "";
-    private bool _showingTranslation = false;
+
+    private bool _hasStartedTyping = false;
     private bool _taskTimerStarted = false;
+    private bool _showingTranslation = false;
+    private bool _isSentenceLocked = false;
+    private bool _warnAboutSpace = true;
+    private bool _taskFailed = false;
+    private bool _isFlashing = false; 
+    private bool _startTypingTooltipShown = false;
+
+    private int _mistakeCount = 0;
+    private int _currentSentenceIndex = 0;
+    private int _spacePressCount = 0;
 
     private SentenceTriggerer _currentTriggerer;
     #endregion
 
+    private void OnEnable()
+    {
+        GameEvents.OnTimerExpired += HandleTimerExpired;
+        GameEvents.OnTaskRetryRequested += HandleTaskRetryRequested;
+    }
+
+    private void OnDisable()
+    {
+        GameEvents.OnTimerExpired -= HandleTimerExpired;
+        GameEvents.OnTaskRetryRequested -= HandleTaskRetryRequested;
+    }
+
+    private void Update()
+    {
+        if (_taskFailed || _isSentenceLocked || currentSentence == null || _currentSentenceIndex >= currentSentence.sentencesToType.Count) return;
+
+        char? umlautInput = umlautConverter?.GetUmlautCharacter();
+        if (umlautInput.HasValue)
+            ProcessInputChar(umlautInput.Value);
+
+        foreach (char c in Input.inputString)
+        {
+            if (c != '\b')
+                ProcessInputChar(c);
+        }
+    }
+
+    #region Public Functions
     public void LoadSentenceSet(Sentences sentenceSet, SentenceTriggerer triggerer)
     {
         currentSentence = sentenceSet;
         _currentTriggerer = triggerer;
         npcDialogue = triggerer.GetNPCDialogue();
-        _currentSentenceIndex = 0;
+
         _typedText = "";
+        _currentSentenceIndex = 0;
         _taskTimerStarted = false;
+
         DisplaySentence();
     }
 
-    public int GetCurrentSentenceIndex() => _currentSentenceIndex;
-
     public void ShowSentenceTranslation()
     {
-        if (currentSentence.translatedSentences.Count > _currentSentenceIndex)
-        {
-            _showingTranslation = true;
-            sentenceTextDisplay.text = currentSentence.translatedSentences[_currentSentenceIndex];
-        }
+        if (_isSentenceLocked) return;
+
+        _showingTranslation = true;
+        sentenceTextDisplay.text = currentSentence.translatedSentences[_currentSentenceIndex];
     }
 
     public void HideSentenceTranslation()
@@ -63,9 +97,13 @@ public class SentenceValidator : MonoBehaviour
         UpdateTypingProgress();
     }
 
+    public int GetCurrentSentenceIndex() => _currentSentenceIndex;
+    #endregion
+
+    #region Private Functions
     private void DisplaySentence()
     {
-        if (currentSentence == null || _currentSentenceIndex >= currentSentence.sentencesToType.Count)
+        if (_currentSentenceIndex >= currentSentence.sentencesToType.Count)
         {
             sentenceTextDisplay.text = "";
             return;
@@ -75,73 +113,23 @@ public class SentenceValidator : MonoBehaviour
         _typedText = "";
         SkipSpaces();
         SkipPunctuation();
-        UpdateTypingProgress();
+        sentenceTextDisplay.text = "";
+        _isSentenceLocked = true;
+        Invoke(nameof(UnlockSentence), 4f);
+        Invoke(nameof(UpdateTypingProgress), 4f);
+        if (_startTypingTooltipShown == false) Invoke(nameof(ShowStartTypingTooltip), 4f);
+        
+        npcDialogue?.Speak(_currentSentenceIndex);
+        _hasStartedTyping = false;
+
 
         npcDialogue?.Speak(_currentSentenceIndex);
         _hasStartedTyping = false;
     }
 
-    private void Update()
-    {
-        if (currentSentence == null || _currentSentenceIndex >= currentSentence.sentencesToType.Count) return;
-
-        char? umlautInput = umlautConverter?.GetUmlautCharacter();
-        if (umlautInput.HasValue)
-        {
-            ProcessInputChar(umlautInput.Value);
-        }
-
-        foreach (char c in Input.inputString)
-        {
-            if (c != '\b')
-            {
-                ProcessInputChar(c);
-            }
-        }
-    }
-
-    #region Private Functions
-    private void UpdateTypingProgress()
-    {
-        if (_showingTranslation)
-        {
-            ShowSentenceTranslation();
-            return;
-        }
-
-        string correctLetters = $"<color=#{ColorUtility.ToHtmlStringRGB(correctLettersColour)}>{_typedText}</color>";
-        string letterToType = _typedText.Length < _sentenceToDisplay.Length
-            ? $"<color=#{ColorUtility.ToHtmlStringRGB(letterToTypeColour)}>{_sentenceToDisplay[_typedText.Length]}</color>"
-            : "";
-        string incompleteLetters = _typedText.Length + 1 < _sentenceToDisplay.Length
-            ? $"<color=#{ColorUtility.ToHtmlStringRGB(incompleteLettersColour)}>{_sentenceToDisplay.Substring(_typedText.Length + 1)}</color>"
-            : "";
-
-        sentenceTextDisplay.text = correctLetters + letterToType + incompleteLetters;
-    }
-
-    private IEnumerator FlashRequiredLetter()
-    {
-        _isFlashing = true;
-
-        string correctLetters = $"<color=#{ColorUtility.ToHtmlStringRGB(correctLettersColour)}>{_typedText}</color>";
-        string flashingLetter = _typedText.Length < _sentenceToDisplay.Length
-            ? $"<color=#{ColorUtility.ToHtmlStringRGB(incorrectLetterColour)}>{_sentenceToDisplay[_typedText.Length]}</color>"
-            : "";
-        string remainingLetters = _typedText.Length + 1 < _sentenceToDisplay.Length
-            ? $"<color=#{ColorUtility.ToHtmlStringRGB(incompleteLettersColour)}>{_sentenceToDisplay.Substring(_typedText.Length + 1)}</color>"
-            : "";
-
-        sentenceTextDisplay.text = correctLetters + flashingLetter + remainingLetters;
-
-        yield return new WaitForSeconds(0.2f);
-        UpdateTypingProgress();
-        _isFlashing = false;
-    }
-
     private void ProcessInputChar(char c)
     {
-        if (_typedText.Length >= _sentenceToDisplay.Length) return;
+        if (_taskFailed || currentSentence == null || _currentSentenceIndex >= currentSentence.sentencesToType.Count) return;
 
         char expectedChar = _sentenceToDisplay[_typedText.Length];
 
@@ -152,9 +140,8 @@ public class SentenceValidator : MonoBehaviour
             if (!_taskTimerStarted)
             {
                 _taskTimerStarted = true;
-                typingTimer.timeLimitInSeconds = currentSentence.timeLimitInMinutes * 60f;
-                typingTimer.StartTimer();
-                typingTimer.OnTimeOut += HandleTimerExpired;
+                typingTimer.StartTimer(currentSentence);
+                GameEvents.OnTaskStarted?.Invoke(currentSentence);
             }
         }
 
@@ -182,8 +169,8 @@ public class SentenceValidator : MonoBehaviour
         else if (!_isFlashing)
         {
             StartCoroutine(FlashRequiredLetter());
-
             _mistakeCount++;
+
             if (_mistakeCount >= 2 && IsUmlautOrSharpS(expectedChar))
             {
                 tooltip?.ShowTooltip("Hold Tab and the letter you want to type. For ß (sharp S), it's Tab + S.");
@@ -200,36 +187,49 @@ public class SentenceValidator : MonoBehaviour
             {
                 typingTimer.StopTimer();
                 _taskTimerStarted = false;
-                daySystem.CompleteTask(currentSentence);
-                _currentTriggerer?.OnTaskCompleted();
+                GameEvents.OnTaskCompleted?.Invoke(currentSentence);
             }
 
             DisplaySentence();
         }
     }
 
-    private void HandleTimerExpired()
+    private IEnumerator FlashRequiredLetter()
     {
-        Debug.Log("Time’s up! Task failed.");
-        typingTimer.StopTimer();
-        _taskTimerStarted = false;
+        _isFlashing = true;
 
-        if (_currentTriggerer != null)
+        string correct = $"<color=#{ColorUtility.ToHtmlStringRGB(correctLettersColour)}>{_typedText}</color>";
+        string incorrect = _typedText.Length < _sentenceToDisplay.Length
+            ? $"<color=#{ColorUtility.ToHtmlStringRGB(incorrectLetterColour)}>{_sentenceToDisplay[_typedText.Length]}</color>"
+            : "";
+        string rest = _typedText.Length + 1 < _sentenceToDisplay.Length
+            ? $"<color=#{ColorUtility.ToHtmlStringRGB(incompleteLettersColour)}>{_sentenceToDisplay.Substring(_typedText.Length + 1)}</color>"
+            : "";
+
+        sentenceTextDisplay.text = correct + incorrect + rest;
+
+        yield return new WaitForSeconds(0.2f);
+        UpdateTypingProgress();
+        _isFlashing = false;
+    }
+
+    private void UpdateTypingProgress()
+    {
+        if (_showingTranslation)
         {
-            daySystem.FailTask(currentSentence, _currentTriggerer.GetOngoingPanel());
-            _currentTriggerer.OnTaskFailed();
+            ShowSentenceTranslation();
+            return;
         }
-    }
 
+        string correctLetters = $"<color=#{ColorUtility.ToHtmlStringRGB(correctLettersColour)}>{_typedText}</color>";
+        string letterToType = _typedText.Length < _sentenceToDisplay.Length
+            ? $"<color=#{ColorUtility.ToHtmlStringRGB(letterToTypeColour)}>{_sentenceToDisplay[_typedText.Length]}</color>"
+            : "";
+        string incompleteLetters = _typedText.Length + 1 < _sentenceToDisplay.Length
+            ? $"<color=#{ColorUtility.ToHtmlStringRGB(incompleteLettersColour)}>{_sentenceToDisplay.Substring(_typedText.Length + 1)}</color>"
+            : "";
 
-    private bool IsUmlautOrSharpS(char c)
-    {
-        return "äöüÄÖÜß".Contains(c.ToString());
-    }
-
-    private bool IsSkippablePunctuation(char c)
-    {
-        return char.IsPunctuation(c) && !IsUmlautOrSharpS(c);
+        sentenceTextDisplay.text = correctLetters + letterToType + incompleteLetters;
     }
 
     private void SkipSpaces()
@@ -247,6 +247,55 @@ public class SentenceValidator : MonoBehaviour
         {
             _typedText += _sentenceToDisplay[_typedText.Length];
         }
+    }
+
+    private bool IsUmlautOrSharpS(char c)
+    {
+        return "äöüÄÖÜß".Contains(c.ToString());
+    }
+
+    private bool IsSkippablePunctuation(char c)
+    {
+        return char.IsPunctuation(c) && !IsUmlautOrSharpS(c);
+    }
+
+    private void HandleTimerExpired(Sentences sentence)
+    {
+        if (sentence != currentSentence) return;
+
+        _taskFailed = true;
+        typingTimer.StopTimer();
+
+        if (_currentTriggerer != null)
+        {
+            daySystem.FailTask(currentSentence);
+            GameEvents.OnTaskFailed?.Invoke(currentSentence);
+        }
+    }
+
+    private void HandleTaskRetryRequested(Sentences sentence)
+    {
+        if (sentence != currentSentence) return;
+
+        _taskFailed = false;
+        _taskTimerStarted = false;
+        _typedText = "";
+        _hasStartedTyping = false;
+        _mistakeCount = 0;
+        _spacePressCount = 0;
+        _warnAboutSpace = true;
+
+        UpdateTypingProgress();
+    }
+    private void ShowStartTypingTooltip()
+    {
+        tooltip?.ShowTooltip("START TYPING!!");
+        _startTypingTooltipShown = true;
+    }
+
+    private void UnlockSentence()
+    {
+        _isSentenceLocked = false;
     }
     #endregion
 }

@@ -14,26 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeLimitInMinutes: 1
   sentencesToType:
-  - Hallo! Ich bin.. erste Mal in Berlin. Wo ist die Taxis?
-  - "Drau\xDFen? Flughafen?"
-  - 'Okay, Outside of Flughafen. '
-  - "Nein, danke sch\xF6n!"
-  - BEENDEN
-  npcDialogueLines:
-  - Guten Tag! Wie kann ich Ihnen helfen?
-  - "Wilkommen in Berlin! Die Taxis finden Sie drau\xDFen vor dem Flughafen."
-  - "Drau\xDFen, Outside of Airport..."
-  - Kann ich Ihnen sonst noch helfen?
-  - "Sch\xF6nen Tag noch, Auf Wiedersehen."
-  translatedDialogueLines:
-  - Good Afternoon! How can I help you?
-  - Welcomet o Berlin! You can find the taxis outside the aiport.
-  - Outside, in front of the airport.
-  - Can I help you with anything else?
-  - Have a nice day, Goodbye.
-  translatedSentences:
-  - Hello! I am.. first time in Berlin. Where is the taxis?
-  - Outside? Airport?
-  - Okay, Outside of Aiport.
-  - No, Thank you!
+  - I need to mimic this text?
+  - Yes
+  - Cool!
+  - Okay
   - EXIT
+  translatedSentences:
+  - Ich soll diesen Text nachmachen?
+  - Ja
+  - Cool! (Remains the same in German)
+  - Okay (Remains the same in German)
+  - BEENDEN

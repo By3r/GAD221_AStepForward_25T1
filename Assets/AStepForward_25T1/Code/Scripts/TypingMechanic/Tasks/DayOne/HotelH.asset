@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 411e2b244c212d54e97f779fb268e21b, type: 3}
+  m_Name: HotelH
+  m_EditorClassIdentifier: 
+  timeLimitInMinutes: 2
+  sentencesToType:
+  - Ich bin neu hier.
+  - "Ich hei\xDFe Lina."
+  - Danke. Ist Zimmer..  ready?
+  - Welches... floor?
+  - Frst floor, rechts. Alles klar.
+  - Alles gut, danke!
+  - BEENDEN
+  translatedSentences:
+  - I am new here.
+  - My name is Lina.
+  - Thank you. Is room.. bereit?
+  - Which... Stockwerk?
+  - Erster Stock, to the right. Got it
+  - All good, thank you!
+  - EXIT

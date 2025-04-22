@@ -13,14 +13,31 @@ MonoBehaviour:
   m_Name: NPC_Tutorial
   m_EditorClassIdentifier: 
   lines:
-  - Guten Tag! Wie kann ich Ihnen helfen?
-  - "Wilkommen in Berlin! Die Taxis finden Sie drau\xDFen vor dem Flughafen."
-  - "Drau\xDFen, Outside of Airport..."
-  - Kann ich Ihnen sonst noch helfen?
-  - "Sch\xF6nen Tag noch, Auf Wiedersehen."
+  - Welcome to the tutorial. Using your keyboard, mimic the highlighted letters to
+    proceed.
+  - Yes, very well! Ready to see what else you can do?
+  - Try hovering the cursor over any sentence. This way, you can translate it.
+  - From this point onwards, expect people to talk to you in german.
+  - Welcome to Germany, I hope you enjoy your stay.
   translatedLines:
-  - Good Afternoon! How can I help you?
-  - Welcome to Berlin! You can find the taxis outside of the airport.
-  - "Outside, drau\xDFen vor dem Flughafen..."
-  - Can I help you with anything else?
-  - Have a nice day, Goodbye.
+  - Willkommen beim Tutorial. Benutze deine Tastatur, um die hervorgehobenen Buchstaben
+    nachzumachen und fortzufahren.
+  - Ja, sehr gut! Bereit zu sehen, was du sonst noch kannst?
+  - "Versuche, den Mauszeiger \xFCber einen beliebigen Satz zu bewegen. So kannst
+    du ihn \xFCbersetzen."
+  - Ab jetzt kannst du erwarten, dass die Leute mit dir auf Deutsch sprechen.
+  - Willkommen in Deutschland,Ich hoffe, du hast eine tolle Zeit hier.
+  audioClips:
+  - {fileID: 8300000, guid: bfb98211384cc974193ea195c1146d6e, type: 3}
+  - {fileID: 8300000, guid: 7ecdc6c667142a949a8256312858f444, type: 3}
+  - {fileID: 8300000, guid: b2a083f0256fd4c40a0e16d1bd9eec33, type: 3}
+  - {fileID: 8300000, guid: 676ee1b427500a24699fb323d2bce1a4, type: 3}
+  - {fileID: 8300000, guid: 43c1e406ff706e542a8b67238e361080, type: 3}
+  npcImages:
+  - {fileID: 21300000, guid: 926fb44804535ce4b923af55a1cff7ad, type: 3}
+  - {fileID: 21300000, guid: 6e6e2c327d26dd048a8017581cf811a6, type: 3}
+  - {fileID: 21300000, guid: c8abc85737b3c794383eedbbfb3856f1, type: 3}
+  - {fileID: 21300000, guid: 926fb44804535ce4b923af55a1cff7ad, type: 3}
+  - {fileID: 21300000, guid: 6e6e2c327d26dd048a8017581cf811a6, type: 3}
+  backgroundImages: []
+  showBackgroundImage: 0000000000

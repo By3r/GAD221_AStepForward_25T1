@@ -13,4 +13,43 @@ MonoBehaviour:
   m_Name: NPC_Taxi
   m_EditorClassIdentifier: 
   lines:
-  - No content is available
+  - "Hallo! Wohin geht\u2019s?"
+  - Okay, ist das dein erstes Mal in Berlin?
+  - "Willkommen in Berlin! Wie hei\xDFt du?"
+  - "Ich hei\xDFe Roberto, ich komme aus Italien."
+  - "Ah, Amerika\u2026 sehr sch\xF6n."
+  - Wir sind beim H-Hotel angekommen.
+  - Das macht 18,75 Euro.
+  translatedLines:
+  - Hello! Where are you going to?
+  - Okay, is this your first time in Berlin?
+  - "Welcome to Berlin! What\u2019s your name?"
+  - My name is Roberto, I come from Italy.
+  - "Ah, America\u2026 very nice."
+  - "We\u2019ve reached H Hotel."
+  - "That\u2019ll be 18.75 euros."
+  audioClips:
+  - {fileID: 8300000, guid: d7b408dd1ac90724daf96317e7d9ea3b, type: 3}
+  - {fileID: 8300000, guid: 3e53c08d175b1fe47b27630c034257c9, type: 3}
+  - {fileID: 8300000, guid: df3e1360bea3c954a83e9a125cbf60ea, type: 3}
+  - {fileID: 8300000, guid: ceddbd51fed4c2440b0f8ebd6b2bf8c2, type: 3}
+  - {fileID: 8300000, guid: 21ef8186c7f7bac4ba759a531ea86d16, type: 3}
+  - {fileID: 8300000, guid: d93c2e2806abc1d4e9f83dbfa939009b, type: 3}
+  - {fileID: 8300000, guid: 75af238ae701fc44d9019cc5901a9ca6, type: 3}
+  npcImages:
+  - {fileID: 21300000, guid: 226c944d60d85a44baf5ab3de451d1d4, type: 3}
+  - {fileID: 21300000, guid: fc6af0bc9ba05964da7aae374417bb1a, type: 3}
+  - {fileID: 21300000, guid: 4fb722caf23e87e46ae7c923e97e87f1, type: 3}
+  - {fileID: 21300000, guid: 226c944d60d85a44baf5ab3de451d1d4, type: 3}
+  - {fileID: 21300000, guid: 4fb722caf23e87e46ae7c923e97e87f1, type: 3}
+  - {fileID: 21300000, guid: fc6af0bc9ba05964da7aae374417bb1a, type: 3}
+  - {fileID: 21300000, guid: 226c944d60d85a44baf5ab3de451d1d4, type: 3}
+  backgroundImages:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 21300000, guid: 32bcda8d7aa6e40409eb35b4a88e6e65, type: 3}
+  - {fileID: 21300000, guid: 32bcda8d7aa6e40409eb35b4a88e6e65, type: 3}
+  - {fileID: 21300000, guid: 32bcda8d7aa6e40409eb35b4a88e6e65, type: 3}
+  - {fileID: 21300000, guid: 32bcda8d7aa6e40409eb35b4a88e6e65, type: 3}
+  - {fileID: 21300000, guid: 32bcda8d7aa6e40409eb35b4a88e6e65, type: 3}
+  showBackgroundImage: 00000101010101
