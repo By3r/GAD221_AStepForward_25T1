@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (navMeshAgent != null)
         {
-            navMeshAgent.updateRotation = false; 
+            navMeshAgent.updateRotation = false;
         }
     }
 
@@ -56,13 +56,22 @@ public class PlayerMovement : MonoBehaviour
         UpdateRotation();
     }
 
+    #region Private Functions
     private void MovePlayerIfDestinationIsValid()
     {
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, groundLayer))
+        if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
         {
-            navMeshAgent.SetDestination(hit.point);
+            if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Teleport"))
+            {
+                return;
+            }
+
+            if (((1 << hit.collider.gameObject.layer) & groundLayer) != 0)
+            {
+                navMeshAgent.SetDestination(hit.point);
+            }
         }
     }
 
@@ -86,4 +95,5 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
+    #endregion
 }
