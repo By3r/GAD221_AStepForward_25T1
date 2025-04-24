@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: TaxiZone
   m_EditorClassIdentifier: 
   zoneMusic: {fileID: 8300000, guid: 7280260716660b04c87a6c6c16162a49, type: 3}
-  volume: 0.7
-  revertOnExit: 1
+  volume: 0.1
+  revertOnExit: 0
