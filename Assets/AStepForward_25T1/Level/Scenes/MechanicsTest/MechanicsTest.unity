@@ -1392,6 +1392,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1091888359}
+  followSpeed: 5
   offset: {x: 0, y: 2, z: -3}
 --- !u!1 &997286143
 GameObject:
@@ -1461,16 +1462,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sentenceTextDisplay: {fileID: 1886178456}
-  currentSentence: {fileID: 0}
+  tooltip: {fileID: 997286147}
+  umlautConverter: {fileID: 997286148}
+  typingTimer: {fileID: 997286151}
+  daySystem: {fileID: 997286150}
   correctLettersColour: {r: 0, g: 0.754717, b: 0.3441449, a: 1}
   letterToTypeColour: {r: 1, g: 0.7603417, b: 0, a: 1}
   incompleteLettersColour: {r: 0.20754719, g: 0.20754719, b: 0.20754719, a: 0.7607843}
   incorrectLetterColour: {r: 1, g: 0.22532359, b: 0, a: 1}
-  tooltip: {fileID: 997286147}
-  umlautConverter: {fileID: 997286148}
+  currentSentence: {fileID: 0}
   npcDialogue: {fileID: 997286149}
-  typingTimer: {fileID: 997286151}
-  daySystem: {fileID: 997286150}
 --- !u!114 &997286147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1512,6 +1513,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueLines: {fileID: 11400000, guid: 321b1c9168573f449b0586694265d6dd, type: 2}
   dialogueText: {fileID: 2047000056}
+  audioSource: {fileID: 0}
+  npcImageUI: {fileID: 0}
+  backgroundImageUI: {fileID: 0}
 --- !u!114 &997286150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1524,9 +1528,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b6871347ca47fc4ebbc7b1c7ac1d515, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalRequiredTasks: 3
+  totalRequiredTasksPerDay: 3
   dayTrackerText: {fileID: 278770435}
   tasksCompletedText: {fileID: 391652163}
+  taskOngoingPanel: {fileID: 0}
+  failPanel: {fileID: 0}
+  successPanel: {fileID: 0}
+  successMessageText: {fileID: 0}
+  dayStartPanel: {fileID: 0}
+  dayStartCanvasGroup: {fileID: 0}
 --- !u!114 &997286151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1539,8 +1549,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3d6004f0233b88409f6df0041fa54d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeLimitInSeconds: 10
   timerText: {fileID: 1352407487926856022}
+  timeLimitInSeconds: 10
 --- !u!1 &1038585258
 GameObject:
   m_ObjectHideFlags: 0
@@ -1749,6 +1759,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   navMeshAgent: {fileID: 1091888365}
+  animator: {fileID: 0}
 --- !u!33 &1091888363
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2450,9 +2461,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sentenceToDisplay: {fileID: 11400000, guid: ec0c040638f60d6448ff6fe8a17f74f7, type: 2}
   _sentenceValidator: {fileID: 997286146}
-  sentenceTextDisplay: {fileID: 1886178456}
   taskDifficultyPanel: {fileID: 1530534427}
-  taskOnGoingPanel: {fileID: 1526501449}
+  taskOngoingPanel: {fileID: 0}
+  exclamationMarkIcon: {fileID: 0}
+  assignedNPCDialogue: {fileID: 0}
 --- !u!1 &1508801785 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 617531780798275441, guid: 146640afb216571488fa0d55ee538d5e, type: 3}
@@ -2492,11 +2504,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sentenceTriggerer: {fileID: 1491156884}
---- !u!1 &1526501449 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4470758683050134100, guid: 7e707e220b855b64185f513fc82d6e8e, type: 3}
-  m_PrefabInstance: {fileID: 1352407487926856021}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1526501450 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 9005531762453639783, guid: 7e707e220b855b64185f513fc82d6e8e, type: 3}
@@ -2599,13 +2606,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1562886215}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.0023590196, y: 0.70287234, z: -0.27172342, w: 0.65736693}
+  m_LocalRotation: {x: 0.37079212, y: 0.01975151, z: -0.86570626, w: 0.33567208}
   m_LocalPosition: {x: -35.4, y: 3, z: 19.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 22.264, y: 89.261, z: -22.93}
+  m_LocalEulerAnglesHint: {x: 16.447, y: -40.962, z: -143.793}
 --- !u!114 &1710516742 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7408924803171662243, guid: 908e1cd6857eb084791f565665e3bb77, type: 3}

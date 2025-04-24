@@ -35,7 +35,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 836dd6b10ba520044a0719cfe1f5857a, type: 3}
   - {fileID: 8300000, guid: dff2f95305b10f24fac864c633d3bdc5, type: 3}
   - {fileID: 8300000, guid: fddf5fa257539934e854e71c9083d51e, type: 3}
-  - {fileID: 8300000, guid: 8c77167e77934de488463f24a760fb16, type: 3}
   - {fileID: 8300000, guid: f5d11ddf466615843b45b25e8aafb735, type: 3}
   npcImages:
   - {fileID: 21300000, guid: c6917222331852448b5518688b34ff8d, type: 3}

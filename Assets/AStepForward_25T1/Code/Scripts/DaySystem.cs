@@ -57,7 +57,6 @@ public class DaySystem : MonoBehaviour
 
         if (successPanel != null && successMessageText != null)
         {
-            Debug.Log("Showing Success Panel");
 
             successPanel.SetActive(true);
             successMessageText.text = $"{completedTasks.Count} / {totalRequiredTasksPerDay}";
@@ -77,7 +76,7 @@ public class DaySystem : MonoBehaviour
         if (completedTasks.Contains(task)) return;
 
         failedTasks.Add(task);
-        Debug.Log($"Task {task.name} failed. retry");
+        // Debug.Log($"Task {task.name} failed. retry");
 
         if (failPanel != null)
             failPanel.SetActive(true);

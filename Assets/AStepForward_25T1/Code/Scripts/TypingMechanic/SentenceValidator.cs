@@ -96,6 +96,13 @@ public class SentenceValidator : MonoBehaviour
         _showingTranslation = false;
         UpdateTypingProgress();
     }
+    public void ReplayCurrentLine()
+    {
+        if (npcDialogue != null && _currentSentenceIndex >= 0)
+        {
+            npcDialogue.ReplaySpecificLine(_currentSentenceIndex);
+        }
+    }
 
     public int GetCurrentSentenceIndex() => _currentSentenceIndex;
     #endregion
