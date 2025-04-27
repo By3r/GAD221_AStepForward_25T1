@@ -7,29 +7,29 @@ using UnityEngine.SceneManagement;
 public class MainMenuManager : MonoBehaviour
 {
     public TMP_Text startButtonText;
-    public TMP_Text optionsButtonText;
+    public TMP_Text creditsButtonText;
     public TMP_Text quitButtonText;
 
     public GameObject mainMenuCanvas; // Reference to the Main Menu Canvas
-    public GameObject optionsCanvas;  // Reference to the Options Canvas
+    public GameObject creditsCanvas;  // Reference to the Credits Canvas
 
     private string startEnglish = "PLAY";
     private string startGerman = "SPIEL STARTEN";
-    private string optionsEnglish = "OPTIONS";
-    private string optionsGerman = "OPTIONEN";
+    private string creditsEnglish = "CREDITS";
+    private string creditsGerman = "CREDITS";
     private string quitEnglish = "QUIT";
-    private string quitGerman = "Aufhören";
+    private string quitGerman = "AUFHÖREN";
 
     void Start()
     {
         // Initialize button texts
         startButtonText.text = startEnglish;
-        optionsButtonText.text = optionsEnglish;
+        creditsButtonText.text = creditsEnglish;
         quitButtonText.text = quitEnglish;
 
         // Ensure the Main Menu is visible and the Options Menu is hidden at start
         mainMenuCanvas.SetActive(true);
-        optionsCanvas.SetActive(false);
+        creditsCanvas.SetActive(false);
     }
 
     public void OnStartButtonHoverEnter()
@@ -42,14 +42,14 @@ public class MainMenuManager : MonoBehaviour
         startButtonText.text = startEnglish;
     }
 
-    public void OnOptionsButtonHoverEnter()
+    public void OnCreditsButtonHoverEnter()
     {
-        optionsButtonText.text = optionsGerman;
+        creditsButtonText.text = creditsGerman;
     }
 
     public void OnOptionsButtonHoverExit()
     {
-        optionsButtonText.text = optionsEnglish;
+        creditsButtonText.text = creditsEnglish;
     }
 
     public void OnQuitButtonHoverEnter()
@@ -71,13 +71,13 @@ public class MainMenuManager : MonoBehaviour
     {
         // Hide the Main Menu and show the Options Menu
         mainMenuCanvas.SetActive(false);
-        optionsCanvas.SetActive(true);
+        creditsCanvas.SetActive(true);
     }
 
     public void GoBackToMainMenu()
     {
         // Hide the Options Menu and show the Main Menu
-        optionsCanvas.SetActive(false);
+        creditsCanvas.SetActive(false);
         mainMenuCanvas.SetActive(true);
     }
 
