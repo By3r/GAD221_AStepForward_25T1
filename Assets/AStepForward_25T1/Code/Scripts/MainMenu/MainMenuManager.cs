@@ -22,6 +22,8 @@ public class MainMenuManager : MonoBehaviour
 
     void Start()
     {
+        Cursor.visible = true;
+
         // Initialize button texts
         startButtonText.text = startEnglish;
         creditsButtonText.text = creditsEnglish;

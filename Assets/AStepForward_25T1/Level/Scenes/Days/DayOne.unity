@@ -122,6 +122,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &173336469 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 915457365354954753, guid: 3018a6779164afe4187b59aa2e9915de, type: 3}
+  m_PrefabInstance: {fileID: 8969933128354894604}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &203365074 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7132909048476849822, guid: 059bbca742d632f499a7ddba4f8162b9, type: 3}
@@ -659,13 +670,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b6871347ca47fc4ebbc7b1c7ac1d515, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalRequiredTasksPerDay: 5
+  totalRequiredTasksPerDay: 1
   dayTrackerText: {fileID: 278770435}
   tasksCompletedText: {fileID: 391652163}
+  successMessageText: {fileID: 1044311996}
+  dayStartPanelText: {fileID: 173336469}
   taskOngoingPanel: {fileID: 1526501449}
   failPanel: {fileID: 718578920}
   successPanel: {fileID: 8180222422235129174}
-  successMessageText: {fileID: 1044311996}
   dayStartPanel: {fileID: 486248782}
   dayStartCanvasGroup: {fileID: 1921612415}
 --- !u!114 &997286151
@@ -2763,6 +2775,10 @@ PrefabInstance:
       propertyPath: sentenceValidator
       value: 
       objectReference: {fileID: 997286146}
+    - target: {fileID: 2948076911978700532, guid: 7a884d5963f6e154fa1bb6bbf6a84cc8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4947115315000544734, guid: 7a884d5963f6e154fa1bb6bbf6a84cc8, type: 3}
       propertyPath: m_SizeDelta.x
       value: 334
@@ -2795,6 +2811,10 @@ PrefabInstance:
       propertyPath: sentenceValidator
       value: 
       objectReference: {fileID: 997286146}
+    - target: {fileID: 4989360868874230467, guid: 7a884d5963f6e154fa1bb6bbf6a84cc8, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 682.4
+      objectReference: {fileID: 0}
     - target: {fileID: 5178433714225562426, guid: 7a884d5963f6e154fa1bb6bbf6a84cc8, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -2846,6 +2866,18 @@ PrefabInstance:
     - target: {fileID: 5559079635848874409, guid: 7a884d5963f6e154fa1bb6bbf6a84cc8, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7371183078133347160, guid: 7a884d5963f6e154fa1bb6bbf6a84cc8, type: 3}
+      propertyPath: hoverText
+      value: TASK COMPLETE!
+      objectReference: {fileID: 0}
+    - target: {fileID: 7371183078133347160, guid: 7a884d5963f6e154fa1bb6bbf6a84cc8, type: 3}
+      propertyPath: defaultText
+      value: AUFGABE GESCHAFFT!
+      objectReference: {fileID: 0}
+    - target: {fileID: 7461332505384176081, guid: 7a884d5963f6e154fa1bb6bbf6a84cc8, type: 3}
+      propertyPath: m_text
+      value: AUFGABE GESCHAFFT!
       objectReference: {fileID: 0}
     - target: {fileID: 7484589556389451219, guid: 7a884d5963f6e154fa1bb6bbf6a84cc8, type: 3}
       propertyPath: m_Sprite
@@ -3170,6 +3202,50 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 915457365354954753, guid: 3018a6779164afe4187b59aa2e9915de, type: 3}
+      propertyPath: m_fontSize
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 915457365354954753, guid: 3018a6779164afe4187b59aa2e9915de, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 2641624979454647344, guid: 3018a6779164afe4187b59aa2e9915de, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2641624979454647344, guid: 3018a6779164afe4187b59aa2e9915de, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2641624979454647344, guid: 3018a6779164afe4187b59aa2e9915de, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2641624979454647344, guid: 3018a6779164afe4187b59aa2e9915de, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -606.11804
+      objectReference: {fileID: 0}
+    - target: {fileID: 4104137952980208073, guid: 3018a6779164afe4187b59aa2e9915de, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4104137952980208073, guid: 3018a6779164afe4187b59aa2e9915de, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4104137952980208073, guid: 3018a6779164afe4187b59aa2e9915de, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1904.155
+      objectReference: {fileID: 0}
+    - target: {fileID: 4104137952980208073, guid: 3018a6779164afe4187b59aa2e9915de, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4104137952980208073, guid: 3018a6779164afe4187b59aa2e9915de, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -484.46103
+      objectReference: {fileID: 0}
     - target: {fileID: 6458859601470030045, guid: 3018a6779164afe4187b59aa2e9915de, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -3254,7 +3330,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas_Days
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 6795385214952307126, guid: 3018a6779164afe4187b59aa2e9915de, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 7245499075328214338, guid: 3018a6779164afe4187b59aa2e9915de, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

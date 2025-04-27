@@ -23,7 +23,7 @@ public class CursorAppearanceManager : MonoBehaviour
 
     private void Update()
     {
-        UpdateCursorAppearance();
+            UpdateCursorAppearance();
     }
 
     #region Private Functions
@@ -42,7 +42,7 @@ public class CursorAppearanceManager : MonoBehaviour
     {
         if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
         {
-            if (_currentLayer != -2) 
+            if (_currentLayer != -2)
             {
                 cursorImage.sprite = _defaultCursor;
                 _currentLayer = -2;
