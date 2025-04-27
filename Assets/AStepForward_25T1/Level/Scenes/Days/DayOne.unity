@@ -670,7 +670,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b6871347ca47fc4ebbc7b1c7ac1d515, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalRequiredTasksPerDay: 1
+  totalRequiredTasksPerDay: 4
   dayTrackerText: {fileID: 278770435}
   tasksCompletedText: {fileID: 391652163}
   successMessageText: {fileID: 1044311996}
