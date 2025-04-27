@@ -715,7 +715,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicSource: {fileID: 990917568}
   fadeSpeed: 2
-  loweredVolume: 0.2
+  loweredVolume: 0.1
 --- !u!114 &997286154
 MonoBehaviour:
   m_ObjectHideFlags: 0
