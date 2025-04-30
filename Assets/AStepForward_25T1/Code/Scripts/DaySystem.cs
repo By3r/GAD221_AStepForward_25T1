@@ -3,27 +3,31 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DaySystem : MonoBehaviour
 {
     #region Variables
-    public int totalRequiredTasksPerDay = 3;
+    public int totalRequiredTasksPerDay = 4;
 
     [Header("UI")]
     [SerializeField] private TMP_Text dayTrackerText;
     [SerializeField] private TMP_Text tasksCompletedText;
+    [SerializeField] private TMP_Text successMessageText;
+    [SerializeField] private TMP_Text dayStartPanelText;
+
     [SerializeField] private GameObject taskOngoingPanel;
     [SerializeField] private GameObject failPanel;
     [SerializeField] private GameObject successPanel;
-    [SerializeField] private TMP_Text successMessageText;
     [SerializeField] private GameObject dayStartPanel;
+
     [SerializeField] private CanvasGroup dayStartCanvasGroup;
 
     private int _currentDay = 1;
     private int _maximumDays = 10;
 
-    private HashSet<Sentences> completedTasks = new HashSet<Sentences>();
-    private HashSet<Sentences> failedTasks = new HashSet<Sentences>();
+    private HashSet<Sentences> _completedTasks = new HashSet<Sentences>();
+    private HashSet<Sentences> _failedTasks = new HashSet<Sentences>();
     #endregion
 
     private void OnEnable()
@@ -47,10 +51,10 @@ public class DaySystem : MonoBehaviour
     #region Public Functions
     public void CompleteTask(Sentences task)
     {
-        if (completedTasks.Contains(task)) return;
+        if (_completedTasks.Contains(task)) return;
 
-        completedTasks.Add(task);
-        failedTasks.Remove(task);
+        _completedTasks.Add(task);
+        _failedTasks.Remove(task);
 
         Debug.Log($"Task {task.name} completed!");
         UpdateUI();
@@ -59,23 +63,23 @@ public class DaySystem : MonoBehaviour
         {
 
             successPanel.SetActive(true);
-            successMessageText.text = $"{completedTasks.Count} / {totalRequiredTasksPerDay}";
+            successMessageText.text = $"{_completedTasks.Count} / {totalRequiredTasksPerDay}";
             StartCoroutine(HideSuccessPanelAfterDelay());
         }
 
-        if (completedTasks.Count >= totalRequiredTasksPerDay)
-        {   
+        if (_completedTasks.Count >= totalRequiredTasksPerDay)
+        {
             Debug.Log("Day Completed!");
-            AdvanceDay();
+            Invoke("DisplayDayCompletedAndResetGame",3f);
         }
     }
 
 
     public void FailTask(Sentences task)
     {
-        if (completedTasks.Contains(task)) return;
+        if (_completedTasks.Contains(task)) return;
 
-        failedTasks.Add(task);
+        _failedTasks.Add(task);
         // Debug.Log($"Task {task.name} failed. retry");
 
         if (failPanel != null)
@@ -88,14 +92,14 @@ public class DaySystem : MonoBehaviour
 
     public bool CanAttemptTask(Sentences task)
     {
-        return !completedTasks.Contains(task);
+        return !_completedTasks.Contains(task);
     }
 
     public void AdvanceDay()
     {
         _currentDay++;
-        completedTasks.Clear();
-        failedTasks.Clear();
+        _completedTasks.Clear();
+        _failedTasks.Clear();
         UpdateUI();
 
         GameEvents.OnNewDayStarted?.Invoke(_currentDay);
@@ -161,7 +165,7 @@ public class DaySystem : MonoBehaviour
         if (tasksCompletedText != null)
         {
             tasksCompletedText.text =
-                $"Tasks: {completedTasks.Count} / {totalRequiredTasksPerDay}";
+                $"Tasks: {_completedTasks.Count} / {totalRequiredTasksPerDay}";
         }
 
         if (dayTrackerText != null)
@@ -169,5 +173,21 @@ public class DaySystem : MonoBehaviour
             dayTrackerText.text = $"Day {Mathf.Clamp(_currentDay, 1, _maximumDays)}";
         }
     }
+
+    #region temporary game ending
+    private void DisplayDayCompletedAndResetGame()
+    {
+        if (dayStartPanel != null) dayStartPanel.SetActive(true);
+        if (dayStartCanvasGroup != null) dayStartCanvasGroup.alpha = 1f;
+
+        dayStartPanelText.text = "Day Completed!";
+        Invoke("GoToMainMenu", 6f);
+    }
+
+    private void GoToMainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+    #endregion
     #endregion
 }

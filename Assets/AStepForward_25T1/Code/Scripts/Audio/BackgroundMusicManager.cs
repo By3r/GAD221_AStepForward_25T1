@@ -7,7 +7,7 @@ public class BackgroundMusicManager : MonoBehaviour
 
     [SerializeField] private AudioSource musicSource;
     [SerializeField] private float fadeSpeed = 2f;
-    [SerializeField] private float loweredVolume = 0.2f;
+    [SerializeField] private float loweredVolume = 0.1f;
     private float _originalVolume;
     #endregion
 
@@ -16,7 +16,7 @@ public class BackgroundMusicManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
+            // DontDestroyOnLoad(gameObject);
         }
         else
         {

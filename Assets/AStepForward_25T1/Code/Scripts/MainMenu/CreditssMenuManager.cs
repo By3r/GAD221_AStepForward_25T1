@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 
-public class OptionsMenuManager : MonoBehaviour
+public class CreditssMenuManager : MonoBehaviour
 {
     public TMP_Text backButtonText;
 
